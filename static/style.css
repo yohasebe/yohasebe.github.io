@@ -536,7 +536,10 @@ main > h1:first-child { margin-top: 0; }
 /* === Responsive === */
 @media (max-width: 600px) {
   html { font-size: 16px; }
-  body { padding: 1rem; }
+  body { padding: 1rem 1.2rem; }
+  .nav-links { gap: 0.8rem; }
+  .nav-group { gap: 0.8rem; }
+  .nav-group + .nav-group { padding-left: 0.8rem; }
   .post-list li { flex-direction: column; gap: 0.1rem; }
   .post-list time { min-width: auto; }
 }

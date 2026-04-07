@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="{{lang}}" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}} — Yoichiro Hasebe</title>
+  <link rel="icon" type="image/png" href="{{root}}assets/images/favicon.png">
+  <link rel="icon" type="image/x-icon" href="{{root}}assets/images/favicon.ico">
+  <link rel="stylesheet" href="{{root}}style.css">
+  <link rel="stylesheet" href="{{root}}katex/katex.min.css">
+  <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="{{root}}feed.xml">
+</head>
+<body class="{{body_class}}">
+  <header>
+    <nav>
+      <a href="{{root}}" class="site-title">Yoichiro Hasebe</a>
+      <div class="nav-links">
+        <span class="nav-group">
+          <a href="{{root}}">Posts</a>
+          <a href="{{root}}tags/">Tags</a>
+          <a href="{{root}}search/">Search</a>
+        </span>
+        <span class="nav-group">
+          <a href="{{root}}cv/">CV</a>
+          <a href="{{root}}projects/">Projects</a>
+          <a href="https://github.com/yohasebe">GitHub</a>
+        </span>
+        <button id="theme-toggle" aria-label="Toggle dark mode">◑</button>
+      </div>
+    </nav>
+  </header>
+  <main>
+    {{content}}
+  </main>
+  <footer>
+    <p>&copy; Yoichiro Hasebe &middot; <a href="mailto:yohasebe@gmail.com">Email</a> &middot; <a href="{{root}}feed.xml">RSS</a></p>
+    <p class="license">Text licensed under <a href="https://creativecommons.org/licenses/by-nd/4.0/">CC BY-ND 4.0</a></p>
+  </footer>
+  <script>
+    // Dark mode toggle
+    const toggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+    const saved = localStorage.getItem('theme');
+    if (saved) html.setAttribute('data-theme', saved);
+    else if (window.matchMedia('(prefers-color-scheme: dark)').matches) html.setAttribute('data-theme', 'dark');
+    toggle.addEventListener('click', () => {
+      const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+
+    // Display dates in visitor's timezone
+    document.querySelectorAll('time[datetime]').forEach(el => {
+      const d = new Date(el.getAttribute('datetime'));
+      el.textContent = d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+    });
+
+    // Image modal
+    const overlay = document.createElement('div');
+    overlay.className = 'img-modal-overlay';
+    overlay.innerHTML = '<img>';
+    document.body.appendChild(overlay);
+    const modalImg = overlay.querySelector('img');
+    document.querySelectorAll('.post-body img').forEach(img => {
+      img.addEventListener('click', () => {
+        modalImg.src = img.src;
+        modalImg.alt = img.alt;
+        overlay.classList.add('active');
+      });
+    });
+    overlay.addEventListener('click', () => overlay.classList.remove('active'));
+  </script>
+  <script defer src="{{root}}katex/katex.min.js"></script>
+  <script defer src="{{root}}katex/auto-render.min.js"
+    onload="renderMathInElement(document.body, {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '$', right: '$', display: false}
+      ],
+      throwOnError: false
+    });"></script>
+</body>
+</html>

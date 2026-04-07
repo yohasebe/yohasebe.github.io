@@ -1,0 +1,14 @@
+drafts/
+content/posts/*/ja.md
+content/posts/*/zh.md
+content/posts/*/ko.md
+/docs/
+.cache/
+.bundle/
+vendor/
+scripts/check-links.rb
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~

@@ -505,6 +505,16 @@ main > h1:first-child { margin-top: 0; }
 [data-theme="dark"] :is(.tags a, .index-tag, .tag-cloud a)[href*="/books/"] { background: #3a3a1a; border-color: #4a4a2a; }
 [data-theme="dark"] :is(.tags a, .index-tag, .tag-cloud a)[href*="/meta/"] { background: #2a2a2a; border-color: #3a3a3a; }
 
+/* Dark mode: add background to transparent project logos */
+[data-theme="dark"] .project-item img[alt="TCSE"],
+[data-theme="dark"] .project-item img[alt="jReadability"],
+[data-theme="dark"] .project-item img[alt="jWriter"],
+[data-theme="dark"] .project-item img[alt="wp2txt"] {
+  background: #e0e0e0;
+  border-radius: 6px;
+  padding: 4px 8px;
+}
+
 .post-body h2:first-child { margin-top: 1.5rem; }
 
 /* === Tag cloud === */

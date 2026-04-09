@@ -122,10 +122,11 @@ end
 # relative to CONTENT_WIDTH. source_dir is the directory to resolve relative src.
 def auto_size_images(html, source_dir)
   html.gsub(/<img\s([^>]*)src="([^"]+)"([^>]*)>/) do
+    match = $~[0]
     pre, src, post = $1, $2, $3
     # Skip if already has inline style with max-width
-    if (pre + post) =~ /style=.*max-width/
-      $&
+    if (pre + post).include?("max-width")
+      match
     else
       img_path = File.expand_path(src, source_dir)
       dims = image_dimensions(img_path)
@@ -146,7 +147,7 @@ def auto_size_images(html, source_dir)
         clean_post = post.sub(/\s*\/\s*\z/, "")
         %(<img #{pre}src="#{src}"#{clean_post} style="max-width:#{pct}%" />)
       else
-        $&
+        match
       end
     end
   end
@@ -400,12 +401,17 @@ def build_entry(entry, prev_entry: nil, next_entry: nil)
   out_dir = File.join(DOCS, section, slug)
   out_path = File.join(out_dir, "index.html")
 
-  # Copy images and other assets (EXIF-stripped for images)
-  assets_dir = File.join(entry[:source_dir], "images")
-  if Dir.exist?(assets_dir)
-    dest = File.join(out_dir, "images")
-    FileUtils.mkdir_p(dest)
-    copy_tree(assets_dir, dest)
+  # Copy all non-Markdown assets from the post directory (images, audio, etc.)
+  Dir.children(entry[:source_dir]).each do |child|
+    src = File.join(entry[:source_dir], child)
+    next if child.end_with?(".md")
+    dest = File.join(out_dir, child)
+    if File.directory?(src)
+      FileUtils.mkdir_p(dest)
+      copy_tree(src, dest)
+    else
+      copy_asset(src, dest)
+    end
   end
 
   # Auto-size images based on intrinsic dimensions (resolve relative to source dir)
@@ -454,6 +460,9 @@ def build_entry(entry, prev_entry: nil, next_entry: nil)
     # Fix relative paths for subdirectory (e.g., ja/index.html -> ../images/, ../../assets/)
     trans_html.gsub!(/src="images\//, 'src="../images/')
     trans_html.gsub!(/href="assets\//, "href=\"#{trans_root}assets/")
+    # Fix relative src/href for non-directory files (e.g., mp3, png at post root)
+    trans_html.gsub!(/src="([^"\/][^"]*\.(mp3|ogg|wav|png|jpg|jpeg|gif|webp|svg))"/) { %{src="../#{$1}"} }
+    trans_html.gsub!(/href="(\.\.\/\d{4}-[^"]*)"/) { %{href="../../#{$1.sub('../', '')}"} }
     trans_lang_nav = build_lang_nav("../", translations.keys, code)
 
     trans_tags_html = (meta["tags"] || []).map { |t|
@@ -800,7 +809,8 @@ build!
 
 if ARGV.include?("serve")
   require "webrick"
-  server = WEBrick::HTTPServer.new(Port: 4000, DocumentRoot: DOCS, Logger: WEBrick::Log.new("/dev/null"), AccessLog: [])
+  mime_types = WEBrick::HTTPUtils::DefaultMimeTypes.merge("mp3" => "audio/mpeg", "ogg" => "audio/ogg", "wav" => "audio/wav")
+  server = WEBrick::HTTPServer.new(Port: 4000, DocumentRoot: DOCS, Logger: WEBrick::Log.new("/dev/null"), AccessLog: [], MimeTypes: mime_types)
 
   # Auto-rebuild on file changes using fswatch
   watch_dirs = [CONTENT, TEMPLATES, STATIC].select { |d| Dir.exist?(d) }.join(" ")

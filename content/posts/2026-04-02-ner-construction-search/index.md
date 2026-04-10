@@ -36,7 +36,9 @@ What typically marks this usage is a restricting phrase like *of the world*, *of
 
 ## `meanwhile in %GPE`
 
-Place names participate in constructions too. `meanwhile in %GPE` is a discourse marker that introduces a parallel scene -- "while that was happening here, over in X something else was going on". It is a narrative device speakers use to cut between settings.
+Place names participate in constructions too. `meanwhile in %GPE`[^gpe] is a discourse marker that introduces a parallel scene -- "while that was happening here, over in X something else was going on". It is a narrative device speakers use to cut between settings.
+
+[^gpe]: `%GPE` stands for *Geopolitical Entity* in spaCy's NER scheme. It covers countries, cities, and other place names with political boundaries, as distinct from `%LOC`, which is used for non-political geographic locations like mountain ranges and bodies of water.
 
 - **Meanwhile, in New York City**, the NYPD has driven police cars equipped with license plate readers past mosques. [[source]](https://yohasebe.com/tcse/t/2149/178141/1/sentence/0/f/f)
 - **Meanwhile in Constantinople**, Anna fought her own battle. [[source]](https://yohasebe.com/tcse/t/25874/368709/1/sentence/0/f/f)

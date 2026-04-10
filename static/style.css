@@ -543,6 +543,37 @@ main > h1:first-child { margin-top: 0; }
 
 .post-body h2:first-child { margin-top: 1.5rem; }
 
+/* === Footnotes (kramdown) === */
+.post-body sup[id^="fnref"] {
+  font-size: 0.75em;
+  margin-left: 0.1em;
+}
+.post-body sup[id^="fnref"] a {
+  text-decoration: none;
+  padding: 0 0.2em;
+}
+.post-body .footnotes {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.88rem;
+  color: var(--fg-muted);
+}
+.post-body .footnotes ol {
+  padding-left: 1.2rem;
+  margin: 0;
+}
+.post-body .footnotes li {
+  margin-bottom: 0.5rem;
+}
+.post-body .footnotes p {
+  margin: 0;
+}
+.post-body .footnotes a.reversefootnote {
+  text-decoration: none;
+  margin-left: 0.3em;
+}
+
 /* === Tag cloud === */
 .tag-cloud {
   display: flex;

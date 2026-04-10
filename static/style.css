@@ -154,6 +154,32 @@ img {
   border-radius: 4px;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
 }
+.img-modal-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.6);
+  border: none;
+  font-size: 1.4rem;
+  line-height: 1;
+  width: 40px;
+  height: 40px;
+  padding: 0 0 2px 0;
+  border-radius: 50%;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s;
+}
+.img-modal-nav:hover {
+  background: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.9);
+}
+.img-modal-nav.prev { left: calc(50% - 45vw - 28px); }
+.img-modal-nav.next { right: calc(50% - 45vw - 28px); }
+.img-modal-nav.visible { display: flex; }
 
 table {
   width: 100%;

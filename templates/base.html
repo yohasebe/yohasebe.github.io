@@ -70,20 +70,59 @@
       el.textContent = d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
     });
 
-    // Image modal
+    // Image modal with keyboard and button navigation
     const overlay = document.createElement('div');
     overlay.className = 'img-modal-overlay';
-    overlay.innerHTML = '<img>';
+    overlay.innerHTML = '<button class="img-modal-nav prev">&#8249;</button><img><button class="img-modal-nav next">&#8250;</button>';
     document.body.appendChild(overlay);
     const modalImg = overlay.querySelector('img');
-    document.querySelectorAll('.post-body img').forEach(img => {
-      img.addEventListener('click', () => {
-        modalImg.src = img.src;
-        modalImg.alt = img.alt;
-        overlay.classList.add('active');
-      });
+    const prevBtn = overlay.querySelector('.prev');
+    const nextBtn = overlay.querySelector('.next');
+    const imgs = Array.from(document.querySelectorAll('.post-body img'));
+    let currentIdx = -1;
+
+    function updateNav() {
+      prevBtn.classList.toggle('visible', currentIdx > 0);
+      nextBtn.classList.toggle('visible', currentIdx < imgs.length - 1);
+    }
+
+    function showModal(idx) {
+      currentIdx = idx;
+      modalImg.src = imgs[idx].src;
+      modalImg.alt = imgs[idx].alt;
+      overlay.classList.add('active');
+      updateNav();
+    }
+
+    function closeModal() {
+      overlay.classList.remove('active');
+      currentIdx = -1;
+    }
+
+    imgs.forEach((img, i) => {
+      img.addEventListener('click', () => showModal(i));
     });
-    overlay.addEventListener('click', () => overlay.classList.remove('active'));
+
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay || e.target === modalImg) closeModal();
+    });
+
+    prevBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (currentIdx > 0) showModal(currentIdx - 1);
+    });
+
+    nextBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (currentIdx < imgs.length - 1) showModal(currentIdx + 1);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (currentIdx < 0) return;
+      if (e.key === 'Escape') closeModal();
+      if (e.key === 'ArrowRight' && currentIdx < imgs.length - 1) showModal(currentIdx + 1);
+      if (e.key === 'ArrowLeft' && currentIdx > 0) showModal(currentIdx - 1);
+    });
   </script>
   <script defer src="{{root}}katex/katex.min.js"></script>
   <script defer src="{{root}}katex/auto-render.min.js"

@@ -399,23 +399,28 @@ end
 
 # Convert ```mermaid code blocks to SVG image files.
 # Returns the markdown with mermaid blocks replaced by ![](*.svg) references.
-def convert_mermaid(markdown, out_dir)
-  return markdown unless system("which mmdc > /dev/null 2>&1")
+# If a pre-generated SVG exists in source_dir, use it without running mmdc.
+def convert_mermaid(markdown, out_dir, source_dir: nil)
+  has_mmdc = system("which mmdc > /dev/null 2>&1")
   counter = 0
   markdown.gsub(/```mermaid\s*\n(.*?)```/m) do
     mermaid_src = $1
     counter += 1
     svg_name = "mermaid-#{counter}.svg"
     svg_path = File.join(out_dir, svg_name)
-    FileUtils.mkdir_p(out_dir)
-    Tempfile.create(["mermaid", ".mmd"]) do |tmp|
-      tmp.write(mermaid_src)
-      tmp.flush
-      system("mmdc", "-i", tmp.path, "-o", svg_path, "-b", "transparent",
-             out: File::NULL, err: File::NULL)
-    end
-    if File.exist?(svg_path)
+
+    # Check if pre-generated SVG exists in source directory
+    if source_dir && File.exist?(File.join(source_dir, svg_name))
       "![](#{svg_name})"
+    elsif has_mmdc
+      FileUtils.mkdir_p(out_dir)
+      Tempfile.create(["mermaid", ".mmd"]) do |tmp|
+        tmp.write(mermaid_src)
+        tmp.flush
+        system("mmdc", "-i", tmp.path, "-o", svg_path, "-b", "transparent",
+               out: File::NULL, err: File::NULL)
+      end
+      File.exist?(svg_path) ? "![](#{svg_name})" : "```mermaid\n#{mermaid_src}```"
     else
       "```mermaid\n#{mermaid_src}```"
     end
@@ -427,7 +432,7 @@ def build_entry(entry, prev_entry: nil, next_entry: nil)
   slug    = entry[:slug]
   meta    = entry[:meta]
   out_dir = File.join(DOCS, section, slug)
-  body = convert_mermaid(entry[:body], out_dir)
+  body = convert_mermaid(entry[:body], out_dir, source_dir: entry[:source_dir])
   html    = render_markdown(body)
 
   out_dir = File.join(DOCS, section, slug)
@@ -495,7 +500,7 @@ def build_entry(entry, prev_entry: nil, next_entry: nil)
 
   # Build translated versions
   translations.each do |code, trans|
-    trans_body = convert_mermaid(trans[:body], out_dir)
+    trans_body = convert_mermaid(trans[:body], out_dir, source_dir: entry[:source_dir])
     trans_html = render_markdown(trans_body)
     # Auto-size images before path rewriting (src still relative to source_dir)
     trans_html = auto_size_images(trans_html, entry[:source_dir])

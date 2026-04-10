@@ -21,7 +21,7 @@ TEMPLATES = File.join(ROOT, "templates")
 STATIC    = File.join(ROOT, "static")
 DOCS      = File.join(ROOT, "docs")
 CACHE     = File.join(ROOT, ".cache", "images")
-SITE_URL  = "https://yohasebe.github.io"
+SITE_URL  = "https://yohasebe.com"
 
 # Reference content width (px) used to calculate image display scaling.
 CONTENT_WIDTH = 700
@@ -225,14 +225,18 @@ def escape_html(s)
   s.gsub("&", "&amp;").gsub("<", "&lt;").gsub(">", "&gt;").gsub('"', "&quot;")
 end
 
-def wrap_in_base(content, title:, lang: "en", root: "./", body_class: "")
+def wrap_in_base(content, title:, lang: "en", root: "./", body_class: "", og_type: "website", og_url: SITE_URL, og_description: "")
   base = read_template("base")
+  desc = og_description.empty? ? "Blog by Yoichiro Hasebe" : og_description
   apply_template(base, {
-    "content"    => content,
-    "title"      => escape_html(title),
-    "lang"       => lang,
-    "root"       => root,
-    "body_class" => body_class,
+    "content"        => content,
+    "title"          => escape_html(title),
+    "lang"           => lang,
+    "root"           => root,
+    "body_class"     => body_class,
+    "og_type"        => og_type,
+    "og_url"         => og_url,
+    "og_description" => escape_html(desc),
   })
 end
 
@@ -446,7 +450,16 @@ def build_entry(entry, prev_entry: nil, next_entry: nil)
   })
 
   lang = meta["lang"] || "en"
-  page = wrap_in_base(post_html, title: meta["title"] || slug, lang: lang, root: root)
+  post_title = meta["title"] || slug
+  post_url = "#{SITE_URL}/#{section}/#{slug}/"
+  post_desc = entry[:body]
+    .gsub(/\[([^\]]*)\]\([^)]*\)/, '\1')  # [text](url) -> text
+    .gsub(/<[^>]+>/, "")                   # strip HTML tags
+    .gsub(/[#*>]/, "")                     # strip markdown formatting
+    .gsub(/\s+/, " ").strip[0, 200]
+    .sub(/\s+\S*\z/, "")
+  page = wrap_in_base(post_html, title: post_title, lang: lang, root: root,
+                       og_type: "article", og_url: post_url, og_description: post_desc)
   write_file(out_path, page)
 
   # Build translated versions
@@ -613,6 +626,25 @@ def build_rss(entries)
   RSS
 
   write_file(File.join(DOCS, "feed.xml"), rss)
+end
+
+def build_sitemap(entries)
+  urls = []
+  urls << %{  <url><loc>#{SITE_URL}/</loc></url>}
+  urls << %{  <url><loc>#{SITE_URL}/tags/</loc></url>}
+  urls << %{  <url><loc>#{SITE_URL}/cv/</loc></url>}
+  urls << %{  <url><loc>#{SITE_URL}/projects/</loc></url>}
+  urls << %{  <url><loc>#{SITE_URL}/search/</loc></url>}
+  entries.each do |e|
+    urls << %{  <url><loc>#{SITE_URL}/#{e[:path]}</loc><lastmod>#{date_iso(e[:meta])}</lastmod></url>}
+  end
+  sitemap = <<~XML
+    <?xml version="1.0" encoding="UTF-8"?>
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    #{urls.join("\n")}
+    </urlset>
+  XML
+  write_file(File.join(DOCS, "sitemap.xml"), sitemap)
 end
 
 def escape_xml(s)
@@ -797,8 +829,18 @@ def build!
   build_search_index(built_posts)
   build_search_page
 
-  # CNAME for custom domain (when ready)
-  # write_file(File.join(DOCS, "CNAME"), "yohasebe.com")
+  # 404 page
+  not_found_html = <<~HTML
+    <article>
+      <h1>Page not found</h1>
+      <p>The page you're looking for doesn't exist. <a href="/">Back to Posts</a></p>
+    </article>
+  HTML
+  page_404 = wrap_in_base(not_found_html, title: "Not Found", root: "/")
+  write_file(File.join(DOCS, "404.html"), page_404)
+
+  # Sitemap
+  build_sitemap(built_posts)
 
   puts "Done! #{built_posts.size} entries built."
 end

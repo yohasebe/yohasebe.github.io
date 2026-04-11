@@ -1,13 +1,17 @@
-<article>
-  <h1>{{title}}</h1>
+<article class="h-entry">
+  <h1 class="p-name">{{title}}</h1>
   <div class="meta">
-    <time datetime="{{date_iso}}">{{date_display}}</time>{{#updated_display}}<span class="updated">(updated <time datetime="{{updated_iso}}">{{updated_display}}</time>)</span>{{/updated_display}}
+    <time class="dt-published" datetime="{{date_iso}}">{{date_display}}</time>{{#updated_display}}<span class="updated">(updated <time class="dt-updated" datetime="{{updated_iso}}">{{updated_display}}</time>)</span>{{/updated_display}}
     {{#tags}}<span class="tags">{{tags_html}}</span>{{/tags}}
+    <span class="p-author h-card" hidden><a class="p-name u-url" href="/">Yoichiro Hasebe</a></span>
   </div>
   {{#lang_nav}}<nav class="lang-nav">{{lang_nav}}</nav>{{/lang_nav}}
   {{#ai_notice}}<div class="ai-notice">{{ai_notice}}</div>{{/ai_notice}}
-  <div class="post-body">
+  <div class="post-body e-content">
     {{content}}
+  </div>
+  <div class="discuss">
+    Got thoughts? <a href="{{discuss_url}}">Discuss this post on GitHub</a>.
   </div>
   {{#post_nav}}<nav class="post-nav">{{post_nav}}</nav>{{/post_nav}}
 </article>

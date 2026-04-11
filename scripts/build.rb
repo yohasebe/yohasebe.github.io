@@ -12,6 +12,7 @@ require "time"
 require "json"
 require "shellwords"
 require "tempfile"
+require "uri"
 require "kramdown"
 require "kramdown-parser-gfm"
 require "rouge"
@@ -470,6 +471,10 @@ def build_entry(entry, prev_entry: nil, next_entry: nil)
     %(<a href="#{root}tags/#{slug_for_tag(t)}/">#{t}</a>)
   }.join(" ")
 
+  discuss_title = "Re: #{meta["title"] || slug}"
+  discuss_body = "> [#{meta["title"] || slug}](#{SITE_URL}/#{section}/#{slug}/)\n\n"
+  discuss_url = "https://github.com/yohasebe/yohasebe.github.io/discussions/new?category=posts&title=#{URI.encode_www_form_component(discuss_title)}&body=#{URI.encode_www_form_component(discuss_body)}"
+
   post_html = apply_template(read_template("post"), {
     "title"        => meta["title"] || slug,
     "date_iso"     => date_iso(meta),
@@ -481,6 +486,7 @@ def build_entry(entry, prev_entry: nil, next_entry: nil)
     "lang_nav"     => lang_nav,
     "ai_notice"    => "",
     "content"      => html,
+    "discuss_url"  => discuss_url,
     "post_nav"     => build_post_nav(prev_entry, next_entry, root),
   })
 
@@ -532,6 +538,7 @@ def build_entry(entry, prev_entry: nil, next_entry: nil)
       "lang_nav"     => trans_lang_nav,
       "ai_notice"    => TRANSLATIONS[code][:notice],
       "content"      => trans_html,
+      "discuss_url"  => discuss_url,
       "post_nav"     => build_post_nav(prev_entry, next_entry, trans_root, "#{code}/", lang_code: code),
     })
 
@@ -588,7 +595,7 @@ def build_index(entries, heading:, out_path:)
       %(<a href="#{root}tags/#{slug_for_tag(t)}/" class="index-tag">#{t}</a>)
     }.join
     tags_span = tags.empty? ? "" : %(<span class="index-tags">#{tags}</span>)
-    %(<li><time datetime="#{date_iso(e[:meta])}">#{date_display(e[:meta])}</time><a href="#{root}#{e[:path]}">#{e[:meta]["title"] || e[:slug]}</a>#{tags_span}</li>)
+    %(<li class="h-entry"><time class="dt-published" datetime="#{date_iso(e[:meta])}">#{date_display(e[:meta])}</time><a class="u-url p-name" href="#{root}#{e[:path]}">#{e[:meta]["title"] || e[:slug]}</a>#{tags_span}</li>)
   }.join("\n  ")
 
   index_html = apply_template(read_template("index"), {

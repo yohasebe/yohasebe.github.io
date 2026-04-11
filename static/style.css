@@ -543,6 +543,19 @@ main > h1:first-child { margin-top: 0; }
 
 .post-body h2:first-child { margin-top: 1.5rem; }
 
+.discuss {
+  margin-top: 2.5rem;
+  font-size: 0.9rem;
+  color: var(--fg-muted);
+  text-align: center;
+}
+.discuss a {
+  color: var(--fg-muted);
+}
+.discuss a:hover {
+  color: var(--fg-link);
+}
+
 /* === Footnotes (kramdown) === */
 .post-body sup[id^="fnref"] {
   font-size: 0.75em;

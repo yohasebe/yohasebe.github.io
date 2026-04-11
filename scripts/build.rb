@@ -229,7 +229,7 @@ def escape_html(s)
   s.gsub("&", "&amp;").gsub("<", "&lt;").gsub(">", "&gt;").gsub('"', "&quot;")
 end
 
-def wrap_in_base(content, title:, lang: "en", root: "./", body_class: "", og_type: "website", og_url: SITE_URL, og_description: "")
+def wrap_in_base(content, title:, lang: "en", root: "./", body_class: "", og_type: "website", og_url: SITE_URL, og_description: "", ld_json: nil)
   base = read_template("base")
   desc = og_description.empty? ? "Blog by Yoichiro Hasebe" : og_description
   apply_template(base, {
@@ -241,6 +241,7 @@ def wrap_in_base(content, title:, lang: "en", root: "./", body_class: "", og_typ
     "og_type"        => og_type,
     "og_url"         => og_url,
     "og_description" => escape_html(desc),
+    "ld_json"        => ld_json || "",
   })
 end
 
@@ -493,7 +494,7 @@ def build_entry(entry, prev_entry: nil, next_entry: nil)
   lang = meta["lang"] || "en"
   post_title = meta["title"] || slug
   post_url = "#{SITE_URL}/#{section}/#{slug}/"
-  post_desc = body
+  post_desc = meta["description"] || body
     .gsub(/```mermaid\s*\n.*?```/m, "")    # strip mermaid blocks
     .gsub(/!\[[^\]]*\]\([^)]*\)/, "")      # strip image references
     .gsub(/\[([^\]]*)\]\([^)]*\)/, '\1')   # [text](url) -> text
@@ -502,8 +503,26 @@ def build_entry(entry, prev_entry: nil, next_entry: nil)
     .gsub(/[#*>]/, "")                     # strip markdown formatting
     .gsub(/\s+/, " ").strip[0, 200]
     .sub(/\s+\S*\z/, "")
+  ld_data = {
+    "@context" => "https://schema.org",
+    "@type" => "BlogPosting",
+    "headline" => post_title,
+    "description" => post_desc,
+    "datePublished" => date_iso(meta),
+    "url" => post_url,
+    "author" => {
+      "@type" => "Person",
+      "name" => "Yoichiro Hasebe",
+      "url" => SITE_URL,
+    },
+    "mainEntityOfPage" => { "@type" => "WebPage", "@id" => post_url },
+  }
+  ld_data["dateModified"] = updated_iso(meta) if updated_iso(meta)
+  ld_json = %(<script type="application/ld+json">#{JSON.generate(ld_data)}</script>)
+
   page = wrap_in_base(post_html, title: post_title, lang: lang, root: root,
-                       og_type: "article", og_url: post_url, og_description: post_desc)
+                       og_type: "article", og_url: post_url, og_description: post_desc,
+                       ld_json: ld_json)
   write_file(out_path, page)
 
   # Build translated versions
@@ -649,22 +668,32 @@ end
 def build_rss(entries)
   items = entries.first(20).map { |e|
     html = render_markdown(e[:body]) rescue ""
+    summary = (e[:meta]["description"] || e[:body]
+      .gsub(/```.*?```/m, "")
+      .gsub(/!\[[^\]]*\]\([^)]*\)/, "")
+      .gsub(/\[([^\]]*)\]\([^)]*\)/, '\1')
+      .gsub(/<[^>]+>/, "")
+      .gsub(/[#*>]/, "")
+      .gsub(/\s+/, " ").strip[0, 280].sub(/\s+\S*\z/, ""))
     <<~ITEM
       <item>
         <title>#{escape_xml(e[:meta]["title"] || e[:slug])}</title>
         <link>#{SITE_URL}/#{e[:path]}</link>
+        <guid isPermaLink="true">#{SITE_URL}/#{e[:path]}</guid>
         <pubDate>#{Time.parse(date_iso(e[:meta])).rfc2822}</pubDate>
-        <description>#{escape_xml(html)}</description>
+        <description>#{escape_xml(summary)}</description>
+        <content:encoded><![CDATA[#{html}]]></content:encoded>
       </item>
     ITEM
   }.join
 
   rss = <<~RSS
     <?xml version="1.0" encoding="UTF-8"?>
-    <rss version="2.0">
+    <rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
       <title>Yoichiro Hasebe</title>
       <link>#{SITE_URL}/</link>
+      <atom:link href="#{SITE_URL}/feed.xml" rel="self" type="application/rss+xml" />
       <description>Posts by Yoichiro Hasebe</description>
       #{items}
     </channel>

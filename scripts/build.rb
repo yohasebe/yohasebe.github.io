@@ -125,9 +125,10 @@ def auto_size_images(html, source_dir)
   html.gsub(/<img\s([^>]*)src="([^"]+)"([^>]*)>/) do
     match = $~[0]
     pre, src, post = $1, $2, $3
-    # Skip if already has inline style with max-width
+    has_loading = (pre + post).include?("loading=")
+    # Skip resize if already has inline style with max-width
     if (pre + post).include?("max-width")
-      match
+      has_loading ? match : match.sub("<img ", '<img loading="lazy" ')
     else
       img_path = File.expand_path(src, source_dir)
       dims = image_dimensions(img_path)
@@ -146,9 +147,10 @@ def auto_size_images(html, source_dir)
               end
         # Remove trailing " /" from self-closing tags before injecting style
         clean_post = post.sub(/\s*\/\s*\z/, "")
-        %(<img #{pre}src="#{src}"#{clean_post} style="max-width:#{pct}%" />)
+        loading_attr = has_loading ? "" : %( loading="lazy")
+        %(<img#{loading_attr} #{pre}src="#{src}"#{clean_post} style="max-width:#{pct}%" />)
       else
-        match
+        has_loading ? match : match.sub("<img ", '<img loading="lazy" ')
       end
     end
   end
@@ -878,6 +880,14 @@ def build!
 
   # Sitemap
   build_sitemap(built_posts)
+
+  # robots.txt
+  robots_txt = <<~TXT
+    User-agent: *
+    Allow: /
+    Sitemap: #{SITE_URL}/sitemap.xml
+  TXT
+  write_file(File.join(DOCS, "robots.txt"), robots_txt)
 
   puts "Done! #{built_posts.size} entries built."
 end

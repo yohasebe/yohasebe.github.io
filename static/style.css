@@ -543,6 +543,14 @@ main > h1:first-child { margin-top: 0; }
 
 .post-body h2:first-child { margin-top: 1.5rem; }
 
+.post-body p.caption {
+  text-align: center;
+  color: var(--fg-muted);
+  font-size: 0.88rem;
+  margin-top: -0.8rem;
+  margin-bottom: 1.5rem;
+}
+
 .discuss {
   margin-top: 2.5rem;
   font-size: 0.9rem;

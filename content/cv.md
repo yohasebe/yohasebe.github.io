@@ -224,7 +224,7 @@ Junior College Division
 
 - Hasebe, Yoichiro. 2023. Redefining the Current Discourse Space Model as a Recursive Monadic Architecture. (The 16th International Cognitive Linguistics Conference) [PDF](assets/docs/iclc16-hasebe-2023.pdf)
 
-- 長谷部陽一郎. 2023.「Monadic Chat：テキスト補完APIで文脈を保持するためのフレームワーク」（言語処理学会第29回年次大会）
+- 長谷部陽一郎. 2023.「Monadic Chat：テキスト補完APIで文脈を保持するためのフレームワーク」（言語処理学会第29回年次大会）[PDF](https://www.anlp.jp/proceedings/annual_meeting/2023/pdf_dir/Q12-9.pdf)
 
 - 李在鎬・長谷部陽一郎・伊集院郁子・青木優子・村田裕美子. 2023.「学習者作文評価システム「jWriter」による習熟度と論理性の自動評価」（言語処理学会第29回年次大会）
 

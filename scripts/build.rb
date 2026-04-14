@@ -674,7 +674,7 @@ def build_rss(entries)
       .gsub(/\[([^\]]*)\]\([^)]*\)/, '\1')
       .gsub(/<[^>]+>/, "")
       .gsub(/[#*>]/, "")
-      .gsub(/\s+/, " ").strip[0, 280].sub(/\s+\S*\z/, ""))
+      .gsub(/\s+/, " ").strip)[0, 140].sub(/\s+\S*\z/, "")
     <<~ITEM
       <item>
         <title>#{escape_xml(e[:meta]["title"] || e[:slug])}</title>
@@ -924,6 +924,18 @@ def build!
     Sitemap: #{SITE_URL}/sitemap.xml
   TXT
   write_file(File.join(DOCS, "robots.txt"), robots_txt)
+
+  # Root-level icons that browsers and clients fetch by convention
+  # (e.g. /favicon.ico, /apple-touch-icon.png).
+  favicon_ico_src = File.join(ROOT, "assets", "images", "favicon.ico")
+  favicon_png_src = File.join(ROOT, "assets", "images", "favicon.png")
+  if File.exist?(favicon_ico_src)
+    FileUtils.cp(favicon_ico_src, File.join(DOCS, "favicon.ico"))
+  end
+  if File.exist?(favicon_png_src)
+    FileUtils.cp(favicon_png_src, File.join(DOCS, "apple-touch-icon.png"))
+    FileUtils.cp(favicon_png_src, File.join(DOCS, "apple-touch-icon-precomposed.png"))
+  end
 
   puts "Done! #{built_posts.size} entries built."
 end

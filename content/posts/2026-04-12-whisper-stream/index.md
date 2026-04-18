@@ -2,7 +2,7 @@
 title: "Whisper Stream: A Unix Building Block for Speech"
 date: 2026-04-12
 tags: [software, ai]
-description: "Whisper Stream is a single-file bash script that turns a microphone into a text stream using OpenAI's API or local whisper.cpp, designed to fit into Unix pipelines."
+description: "Whisper Stream: a single-file bash script that turns a microphone into a text stream via OpenAI or whisper.cpp, for Unix pipelines."
 ---
 
 [Whisper Stream](https://github.com/yohasebe/whisper-stream) is a bash script that records speech, detects silence between utterances using sox, and sends each chunk to either OpenAI's transcription API or a local whisper.cpp model for transcription. I originally wrote it in the summer of 2023 and have not touched it much since. Recently I dusted it off and pushed a v2.0.0 update, mainly to make it more useful as a component in Unix pipelines.

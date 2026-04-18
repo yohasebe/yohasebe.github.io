@@ -2,6 +2,7 @@
 title: "Why I Write in English"
 date: 2026-04-01
 tags: [meta]
+description: "Why I write this blog in English even though Japanese is my native language, and what LLMs have changed about that choice."
 ---
 
 Japanese is my native language. So why write this blog in English? There are several reasons.

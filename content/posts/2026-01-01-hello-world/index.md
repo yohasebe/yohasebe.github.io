@@ -2,6 +2,7 @@
 title: "Hello, World (Again)"
 date: 2026-01-01
 tags: [meta]
+description: "Starting a minimal custom blog system built in Ruby -- Markdown, YAML front matter, HTML templates, no framework."
 ---
 
 First post on the new site. I'm building a minimal blogging system from scratch -- just Ruby, Markdown, and a handful of HTML templates. No framework.

@@ -2,6 +2,7 @@
 title: "Cover Sessions, Spring 2026"
 date: 2026-03-15
 tags: [music, guitar]
+description: "Another round at the cover session event -- guitar on six songs from Dokken, back number, and Seiko Matsuda."
 ---
 
 The cover session event I [wrote about earlier](../2026-01-22-cover-session/index.html) came around again, and I played guitar on six songs this time.

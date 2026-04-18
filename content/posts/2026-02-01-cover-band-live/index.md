@@ -2,6 +2,7 @@
 title: "A Small Gig"
 date: 2026-02-01
 tags: [music, guitar]
+description: "A small cover band gig with friends: eight songs across a wide range of Japanese rock styles, on guitar."
 ---
 
 Played a small gig with friends as a cover band, on guitar. After a few rehearsals, we performed eight songs. Apart from one that I requested, the setlist was put together by the other members. The songs covered a wide range of styles, which made learning and dialing in the right tones for each a real challenge. With vocals, two guitars, bass, drums, and keyboards, I had to find a sound that held its own without throwing off the balance.

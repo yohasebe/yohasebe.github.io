@@ -2,6 +2,7 @@
 title: 'What "Monadic" in Monadic Chat Means'
 date: 2026-04-13
 tags: [software, ai, linguistics, research]
+description: "The origin of the name 'Monadic Chat', connecting the functional programming monad to Langacker's current discourse space."
 ---
 
 [Monadic Chat](https://github.com/yohasebe/monadic-chat) is a project I started in 2022, when the GPT-3 text completion API was the most capable thing one could call from a script. The OpenAI Chat API did not yet exist, and there was no built-in notion of conversational context. To make a chatbot that remembered what had been said, you had to manage the context yourself, on your own terms. I built Monadic Chat as one way of doing that. The name has stuck through several major rewrites, and I would like to explain where it came from -- and why it still seems to fit.

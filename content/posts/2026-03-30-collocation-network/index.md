@@ -2,6 +2,7 @@
 title: "Collocation Networks in TCSE"
 date: 2026-03-30
 tags: [linguistics, nlp, education, research]
+description: "The collocation network feature in TCSE, including the statistical measures behind it and a visualization example."
 ---
 
 This post introduces the collocation network feature I built into [TCSE](https://yohasebe.com/tcse), covering the statistical measures behind it and a real visualization example.

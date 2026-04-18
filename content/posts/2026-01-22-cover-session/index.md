@@ -2,6 +2,7 @@
 title: "Cover Sessions, Fall 2025"
 date: 2026-01-22
 tags: [music, guitar]
+description: "Playing guitar at a cover session event with friends -- seven songs across Japanese rock and hard rock classics."
 ---
 
 Back in my teens, I was into hard rock and heavy metal, playing guitar in bands. Last September, an old friend -- the drummer from those days -- invited me to a cover session event. It was a full Sunday afternoon of music: roughly 50 songs, with participants rotating in and out across different tracks.

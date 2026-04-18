@@ -2,6 +2,7 @@
 title: "Pickup Swap Gone Wrong (and Then Right)"
 date: 2026-03-14
 tags: [music, guitar]
+description: "Swapping the pickups on my Fujigen Expert Strat to Suhr sets, soldering iron in hand for the first time in years."
 ---
 
 After the [live event in February](../2026-02-01-cover-band-live/index.html), I was unhappy with my guitar tone. My guitar is a Fujigen Expert OS (EOS), a semi-custom Strat-type with an SSH pickup configuration. The output was just too low. With my Boss GX-10 multi-effects unit, I had to boost the input level by +7 to 8 dB just to reach a proper signal level. Coming from a hard rock and metal background, I have never learned to work well with low-output pickups. There is a rear pickup direct switch that bypasses the volume and tone pots, but even with that engaged, the output was weak. The tone had a wide range but lacked the focus I wanted. I had sensed this myself, but when other band members pointed it out during rehearsal, it became impossible to ignore.

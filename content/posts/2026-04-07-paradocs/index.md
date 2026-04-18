@@ -2,6 +2,7 @@
 title: "Paradocs: Sentence-by-Sentence Presentations"
 date: 2026-04-07
 tags: [software, education]
+description: "Paradocs 1.0, a presentation tool that highlights text sentence by sentence -- originally built for ESL reading classes."
 ---
 
 I released version 1.0 of [Paradocs](https://yohasebe.github.io/paradocs), a presentation tool. The name stands for paragraph-oriented document presentation system, reflecting its focus on handling text at the paragraph and sentence level. I originally built it in 2018 for ESL reading classes. The core feature is sentence-by-sentence highlighting as you walk through a text.

@@ -2,6 +2,7 @@
 title: "wp2txt: Caching and Category Extraction"
 date: 2026-02-21
 tags: [software, nlp]
+description: "wp2txt 2.1, a command-line Wikipedia text extractor in Ruby, now with SQLite caching, Ractor parallelism, and category extraction."
 ---
 
 I released [wp2txt](https://github.com/yohasebe/wp2txt) version 2.1. wp2txt is a command-line toolkit for extracting text from Wikipedia dump files. I first wrote it in 2012, and have been maintaining it since.

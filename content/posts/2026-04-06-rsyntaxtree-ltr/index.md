@@ -2,6 +2,7 @@
 title: "RSyntaxTree: Left-to-Right Trees"
 date: 2026-04-06
 tags: [software, linguistics]
+description: "RSyntaxTree 1.5 adds left-to-right tree layout, useful for classification hierarchies and deep dependency structures."
 ---
 
 [RSyntaxTree](https://github.com/yohasebe/rsyntaxtree) 1.5 is out. The main addition is left-to-right tree layout, where the root sits on the left and leaves expand to the right.

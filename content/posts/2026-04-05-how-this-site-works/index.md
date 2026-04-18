@@ -2,6 +2,7 @@
 title: "How This Site Works"
 date: 2026-04-05
 tags: [software, meta]
+description: "Under the hood of this site: a custom Ruby static site generator with Mermaid pre-rendering, EXIF stripping, and client-side search."
 ---
 
 As I wrote in the [first post](../2026-01-01-hello-world/index.html), this site runs on a custom static site generator I built in Ruby. No framework -- just a single script that converts Markdown files into HTML pages. Here is how the pieces fit together.

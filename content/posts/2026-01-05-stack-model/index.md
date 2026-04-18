@@ -2,6 +2,7 @@
 title: "The Monadic Structure of Discourse"
 date: 2026-01-05
 tags: [linguistics, ai, research]
+description: "A stack-based model of how meaning is built across utterances, borrowing the monad structure from functional programming."
 ---
 
 Speakers build meaning by stacking utterances one after another. Content too complex for a single word or sentence takes shape in the listener's mind through a chain of utterances. This process bears a close resemblance to the "monad", a structure well known in functional programming. The "stack-based structure model of discourse", published in *Ninchi Gengogaku Ronkou* (Studies in Cognitive Linguistics, vol. 18), uses this resemblance as a point of departure for describing how meaning is constructed in discourse.

@@ -2,6 +2,7 @@
 title: "Named Entities as Typed Variables in Constructions"
 date: 2026-04-02
 tags: [linguistics, nlp, research]
+description: "Treating named entities as typed variables in construction grammar search -- %PERSON said, X since %EVENT -- now in TCSE."
 ---
 
 One of the core ideas in construction grammar is that linguistic knowledge consists of form-meaning pairings at every level -- from individual morphemes to abstract clause patterns. Many constructions have open slots that speakers fill with words of a certain type. "Give X a Y" wants a recipient and a theme. "The more X, the more Y" wants two scalar expressions.

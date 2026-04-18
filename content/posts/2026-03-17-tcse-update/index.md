@@ -2,6 +2,7 @@
 title: "TCSE: Entity Search and 6,400 Talks"
 date: 2026-03-17
 tags: [software, nlp, linguistics]
+description: "TCSE updates: named entity search, collocation network visualization, and performance improvements across 6,400 TED talks."
 ---
 
 I have been working on a round of updates to [TCSE](https://yohasebe.com/tcse) (TED Corpus Search Engine), a search tool for TED Talk transcripts with translations in 34 languages. It started as a teaching and research tool for corpus linguistics, and has grown into something with over 6,400 searchable talks.

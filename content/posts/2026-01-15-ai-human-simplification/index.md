@@ -2,6 +2,7 @@
 title: "How AI and Humans Simplify Text Differently"
 date: 2026-01-15
 tags: [linguistics, ai, education, research]
+description: "Comparing how GPT-4 and human experts simplify Japanese news, and what the differences reveal about language processing."
 ---
 
 Last year (2025), I spent time thinking about the differences between human and AI language processing. Through a co-authored paper published in Intercultural Pragmatics and a keynote lecture in Taiwan, contrasting strategies in text simplification came into sharper focus. Here I look back at the key points.

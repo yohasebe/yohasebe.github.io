@@ -2,6 +2,7 @@
 title: "TCSE: Exporting Search Results"
 date: 2026-04-11
 tags: [software, linguistics, nlp, research]
+description: "TCSE now exports search results as TSV or JSON, page by page, with match context and metadata for close reading and analysis."
 ---
 
 Over the past year or two, I have received a handful of emails asking for the same thing: could TCSE let users download search results, instead of forcing them to copy and paste hits one by one into a spreadsheet? I agreed every time that it was a reasonable request, put it on my to-do list, and never quite got around to it. That has now finally changed.

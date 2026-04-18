@@ -2,6 +2,7 @@
 title: "Rocky as a Coding Agent"
 date: 2026-03-21
 tags: [ai, books, film]
+description: "Watching the Project Hail Mary film with family, and seeing Rocky as a mirror of how we work with coding agents like Claude Code."
 ---
 
 We went to see the *Project Hail Mary* movie as a family. I had already read the novel -- well, listened to the audiobook, to be precise -- but my wife and kids went in knowing almost nothing about the story.

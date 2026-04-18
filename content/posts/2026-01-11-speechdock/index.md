@@ -2,6 +2,7 @@
 title: "SpeechDock: Speech Processing from the Menu Bar"
 date: 2026-01-11
 tags: [software, macos]
+description: "SpeechDock: a macOS menu bar app for text-to-speech, speech-to-text, and translation, using web APIs or native macOS features."
 ---
 
 I released [SpeechDock](https://github.com/yohasebe/speechdock), a macOS menu bar application for practical speech processing. It handles text-to-speech, speech-to-text, and translation, and sits in the menu bar so it is always accessible.

@@ -2,6 +2,7 @@
 title: "ruby-spacy: Connecting spaCy and LLMs in Ruby"
 date: 2026-02-23
 tags: [software, nlp, ai]
+description: "ruby-spacy 0.4.0 adds block-based OpenAI API integration, combining spaCy's structural analysis with LLM-based semantic interpretation."
 ---
 
 I released version 0.4.0 of [ruby-spacy](https://github.com/yohasebe/ruby-spacy), a wrapper that lets you use Python's spaCy from Ruby via PyCall.

@@ -651,7 +651,11 @@ def build_tag_pages(all_entries)
     root = relative_root(out_path)
 
     items = entries.map { |e|
-      %(<li><time datetime="#{date_iso(e[:meta])}">#{date_display(e[:meta])}</time><a href="#{root}#{e[:path]}">#{e[:meta]["title"] || e[:slug]}</a></li>)
+      tags = (e[:meta]["tags"] || []).map { |t|
+        %(<a href="#{root}tags/#{slug_for_tag(t)}/" class="index-tag">#{t}</a>)
+      }.join
+      tags_span = tags.empty? ? "" : %(<span class="index-tags">#{tags}</span>)
+      %(<li><time datetime="#{date_iso(e[:meta])}">#{date_display(e[:meta])}</time><a href="#{root}#{e[:path]}">#{e[:meta]["title"] || e[:slug]}</a>#{tags_span}</li>)
     }.join("\n  ")
 
     tag_html = apply_template(read_template("tag"), {
@@ -745,6 +749,7 @@ def build_search_index(entries)
       t: e[:meta]["title"] || "",
       p: e[:path],
       d: date_display(e[:meta]),
+      tg: e[:meta]["tags"] || [],
     }
 
     plain = strip_html(render_markdown(e[:body]))
@@ -805,8 +810,13 @@ def build_search_page
         const ids = search(q);
         ids.forEach(id => {
           const e = docs[id];
+          const tagsHtml = (e.tg || []).map(t => {
+            const slug = t.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+            return '<a href="#{root}tags/' + slug + '/" class="index-tag">' + t + '</a>';
+          }).join('');
+          const tagsSpan = tagsHtml ? '<span class="index-tags">' + tagsHtml + '</span>' : '';
           const li = document.createElement('li');
-          li.innerHTML = '<time>' + e.d + '</time><a href="#{root}' + e.p + '">' + e.t + '</a>';
+          li.innerHTML = '<time>' + e.d + '</time><a href="#{root}' + e.p + '">' + e.t + '</a>' + tagsSpan;
           results.appendChild(li);
         });
         if (ids.length === 0) {

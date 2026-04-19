@@ -217,8 +217,16 @@ nav {
   font-weight: 600;
   font-size: 1.1rem;
   color: var(--fg);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 .site-title:hover { text-decoration: none; }
+
+.site-icon {
+  width: 22px;
+  height: 22px;
+}
 
 .nav-links {
   display: flex;

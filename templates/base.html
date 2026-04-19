@@ -68,7 +68,7 @@
     // Display dates in visitor's timezone
     document.querySelectorAll('time[datetime]').forEach(el => {
       const d = new Date(el.getAttribute('datetime'));
-      el.textContent = d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+      el.textContent = d.toLocaleDateString('en', { year: 'numeric', month: 'short', day: 'numeric' });
     });
 
     // Image modal with keyboard and button navigation

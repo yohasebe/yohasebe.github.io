@@ -936,6 +936,9 @@ def build!
   robots_txt = <<~TXT
     User-agent: *
     Allow: /
+    Disallow: /tcse/v/
+    Disallow: /tcse/video/
+    Disallow: /tcse/export
     Sitemap: #{SITE_URL}/sitemap.xml
   TXT
   write_file(File.join(DOCS, "robots.txt"), robots_txt)

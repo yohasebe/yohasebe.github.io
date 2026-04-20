@@ -250,6 +250,11 @@ def relative_root(output_path)
   depth == 0 ? "./" : ("../" * depth)
 end
 
+def absolute_url(output_path)
+  rel = output_path.sub(DOCS + "/", "").sub(/index\.html$/, "")
+  "#{SITE_URL}/#{rel}"
+end
+
 def date_iso(meta)
   d = meta["date"]
   case d
@@ -561,7 +566,7 @@ def build_entry(entry, prev_entry: nil, next_entry: nil)
       "post_nav"     => build_post_nav(prev_entry, next_entry, trans_root, "#{code}/", lang_code: code),
     })
 
-    page = wrap_in_base(trans_post_html, title: trans_title, lang: code, root: trans_root)
+    page = wrap_in_base(trans_post_html, title: trans_title, lang: code, root: trans_root, og_url: "#{SITE_URL}/#{section}/#{slug}/#{code}/")
     write_file(trans_out_path, page)
   end
 
@@ -622,7 +627,7 @@ def build_index(entries, heading:, out_path:)
     "entries" => items,
   })
 
-  page = wrap_in_base(index_html, title: heading, root: root)
+  page = wrap_in_base(index_html, title: heading, root: root, og_url: absolute_url(out_path))
   write_file(out_path, page)
 end
 
@@ -642,7 +647,7 @@ def build_tag_pages(all_entries)
   }.join("\n  ")
 
   cloud_html = "<h1>Tags</h1>\n<ul class=\"tag-cloud\">\n  #{cloud}\n</ul>"
-  page = wrap_in_base(cloud_html, title: "Tags", root: root)
+  page = wrap_in_base(cloud_html, title: "Tags", root: root, og_url: absolute_url(root_path))
   write_file(root_path, page)
 
   # Individual tag pages
@@ -664,7 +669,7 @@ def build_tag_pages(all_entries)
       "root"    => root,
     })
 
-    page = wrap_in_base(tag_html, title: "Tag: #{tag}", root: root)
+    page = wrap_in_base(tag_html, title: "Tag: #{tag}", root: root, og_url: absolute_url(out_path))
     write_file(out_path, page)
   end
 end
@@ -826,7 +831,7 @@ def build_search_page
     </script>
   HTML
 
-  page = wrap_in_base(search_html, title: "Search", root: root)
+  page = wrap_in_base(search_html, title: "Search", root: root, og_url: absolute_url(out_path))
   write_file(out_path, page)
 end
 
@@ -857,7 +862,7 @@ def build_static_pages
   root = relative_root(out_path)
   projects_html = build_projects_html(root)
   page = wrap_in_base("<article>\n#{projects_html}\n</article>",
-                       title: "Projects", root: root)
+                       title: "Projects", root: root, og_url: absolute_url(out_path))
   write_file(out_path, page)
 
   # CV page (if exists)
@@ -871,7 +876,7 @@ def build_static_pages
     html.gsub!(/href="assets\//, "href=\"#{root}assets/")
     toc = generate_toc(html)
     page = wrap_in_base("<article>\n<h1>#{meta["title"] || "CV"}</h1>\n#{toc}#{html}\n</article>",
-                         title: meta["title"] || "CV", root: root)
+                         title: meta["title"] || "CV", root: root, og_url: absolute_url(out_path))
     write_file(out_path, page)
   end
 end

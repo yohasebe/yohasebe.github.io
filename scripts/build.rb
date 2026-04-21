@@ -583,7 +583,7 @@ PROJECTS = [
   { name: "RSyntaxTree", desc: "Syntax tree generator for linguistics", url: "https://yohasebe.com/rsyntaxtree", logo: "assets/images/projects/rsyntaxtree-icon.png", logo_h: 56 },
   { name: "jReadability", desc: "Japanese text readability measurement system", url: "https://jreadability.net", logo: "assets/images/projects/jreadability-logo.png", logo_h: 48 },
   { name: "jWriter", desc: "Japanese learner writing evaluation system", url: "https://jreadability.net/jwriter", logo: "assets/images/projects/jwriter-logo.png", logo_h: 44 },
-  { name: "Paradocs", desc: "Paragraph-oriented text presentation system", url: "https://yohasebe.github.io/paradocs", logo: "assets/images/projects/paradocs-icon.png", logo_h: 56 },
+  { name: "Paradocs", desc: "Paragraph-oriented text presentation system", url: "https://yohasebe.com/paradocs/", logo: "assets/images/projects/paradocs-icon.png", logo_h: 56 },
   { name: "SpeechDock", desc: "Speech-to-text transcription tool", url: "https://github.com/yohasebe/speechdock", logo: "assets/images/projects/speechdock-icon.png", logo_h: 56 },
   { name: "wp2txt", desc: "Wikipedia dump to plain text converter", url: "https://github.com/yohasebe/wp2txt", logo: "assets/images/projects/wp2txt-logo.svg", logo_h: 56 },
 ]

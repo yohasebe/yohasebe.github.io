@@ -48,12 +48,14 @@ Junior College Division
 
 ### Principal Investigator
 
-- Grant-in-Aid for Scientific Research (C) [18K00670](https://kaken.nii.ac.jp/en/grant/KAKENHI-PROJECT-18K00670/): 英語話し言葉コーパスを用いた談話論理構造パターンの認知言語学的分析, JSPS, 2018–2022
-- Grant-in-Aid for Young Scientists (B) [25870898](https://kaken.nii.ac.jp/en/grant/KAKENHI-PROJECT-25870898/): 認知言語学に基づいた英語語彙・構文ネットワーク構築のための学習法開発, JSPS, 2013–2016
-- Grant-in-Aid for Young Scientists (B) [21720179](https://kaken.nii.ac.jp/en/grant/KAKENHI-PROJECT-21720179/): 記号主義言語論に基づく英語動詞構文ネットワークのデータベース化, JSPS, 2009–2011
+- Grant-in-Aid for Scientific Research (C): 談話の多層的理解を可能にする文脈解析エンジンの開発, JSPS, 2026–2028
+- Grant-in-Aid for Scientific Research (C): 英語話し言葉コーパスを用いた談話論理構造パターンの認知言語学的分析, JSPS, 2018–2022
+- Grant-in-Aid for Young Scientists (B): 認知言語学に基づいた英語語彙・構文ネットワーク構築のための学習法開発, JSPS, 2013–2016
+- Grant-in-Aid for Young Scientists (B): 記号主義言語論に基づく英語動詞構文ネットワークのデータベース化, JSPS, 2009–2011
 
 ### Co-Investigator
 
+- Grant-in-Aid for Transformative Research Areas (B): 合成コーパスの多角的利用に基づいた言語の内在特性測定学, JSPS, 2026–2028
 - Grant-in-Aid for Scientific Research (B): 生成AIを組み込んだ日本語作文診断システムの開発と普及に関する研究, JSPS, 2024–2027
 - Grant-in-Aid for Scientific Research (B): 論理的文章作成を支援するウェブ型自動処理システムの開発と普及に関する研究, JSPS, 2019–2023
 - Grant-in-Aid for Scientific Research (C): 中上級学習者のための日本語読み書き支援システム構築に関する研究, JSPS, 2016–2019

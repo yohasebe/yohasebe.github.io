@@ -535,28 +535,41 @@ main > h1:first-child { margin-top: 0; }
 .tags a:hover { border-color: var(--fg-muted); text-decoration: none; }
 .tags a::before { content: "#"; }
 
+.tag-page-title { display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem; }
+.tag-badge {
+  display: inline-block;
+  font-size: 0.75em;
+  font-weight: normal;
+  padding: 0.15rem 0.7rem;
+  border-radius: 9999px;
+  color: var(--fg-muted);
+  background: var(--bg-code);
+  border: 1px solid var(--border);
+  vertical-align: middle;
+}
+
 /* Tag colors (light) */
-[data-theme="light"] :is(.tags a, .index-tag, .tag-cloud a)[href*="/software/"] { background: #e8f4fd; border-color: #c4dff0; }
-[data-theme="light"] :is(.tags a, .index-tag, .tag-cloud a)[href*="/ai/"] { background: #fce4ec; border-color: #f0c4d0; }
-[data-theme="light"] :is(.tags a, .index-tag, .tag-cloud a)[href*="/linguistics/"] { background: #e8f5e9; border-color: #c8e6c9; }
-[data-theme="light"] :is(.tags a, .index-tag, .tag-cloud a)[href*="/nlp/"] { background: #fff3e0; border-color: #ffe0b2; }
-[data-theme="light"] :is(.tags a, .index-tag, .tag-cloud a)[href*="/education/"] { background: #f3e5f5; border-color: #e1bee7; }
-[data-theme="light"] :is(.tags a, .index-tag, .tag-cloud a)[href*="/music/"] { background: #fce4ec; border-color: #f8bbd0; }
-[data-theme="light"] :is(.tags a, .index-tag, .tag-cloud a)[href*="/guitar/"] { background: #fce4ec; border-color: #f8bbd0; }
-[data-theme="light"] :is(.tags a, .index-tag, .tag-cloud a)[href*="/research/"] { background: #e0f2f1; border-color: #b2dfdb; }
-[data-theme="light"] :is(.tags a, .index-tag, .tag-cloud a)[href*="/books/"] { background: #fff8e1; border-color: #ffecb3; }
-[data-theme="light"] :is(.tags a, .index-tag, .tag-cloud a)[href*="/meta/"] { background: #f5f5f5; border-color: #e0e0e0; }
+[data-theme="light"] :is(.tags a, .index-tag, .tag-cloud a)[href*="/software/"], [data-theme="light"] .tag-badge.tag-software { background: #e8f4fd; border-color: #c4dff0; }
+[data-theme="light"] :is(.tags a, .index-tag, .tag-cloud a)[href*="/ai/"], [data-theme="light"] .tag-badge.tag-ai { background: #fce4ec; border-color: #f0c4d0; }
+[data-theme="light"] :is(.tags a, .index-tag, .tag-cloud a)[href*="/linguistics/"], [data-theme="light"] .tag-badge.tag-linguistics { background: #e8f5e9; border-color: #c8e6c9; }
+[data-theme="light"] :is(.tags a, .index-tag, .tag-cloud a)[href*="/nlp/"], [data-theme="light"] .tag-badge.tag-nlp { background: #fff3e0; border-color: #ffe0b2; }
+[data-theme="light"] :is(.tags a, .index-tag, .tag-cloud a)[href*="/education/"], [data-theme="light"] .tag-badge.tag-education { background: #f3e5f5; border-color: #e1bee7; }
+[data-theme="light"] :is(.tags a, .index-tag, .tag-cloud a)[href*="/music/"], [data-theme="light"] .tag-badge.tag-music { background: #fce4ec; border-color: #f8bbd0; }
+[data-theme="light"] :is(.tags a, .index-tag, .tag-cloud a)[href*="/guitar/"], [data-theme="light"] .tag-badge.tag-guitar { background: #fce4ec; border-color: #f8bbd0; }
+[data-theme="light"] :is(.tags a, .index-tag, .tag-cloud a)[href*="/research/"], [data-theme="light"] .tag-badge.tag-research { background: #e0f2f1; border-color: #b2dfdb; }
+[data-theme="light"] :is(.tags a, .index-tag, .tag-cloud a)[href*="/books/"], [data-theme="light"] .tag-badge.tag-books { background: #fff8e1; border-color: #ffecb3; }
+[data-theme="light"] :is(.tags a, .index-tag, .tag-cloud a)[href*="/meta/"], [data-theme="light"] .tag-badge.tag-meta { background: #f5f5f5; border-color: #e0e0e0; }
 
 /* Tag colors (dark) */
-[data-theme="dark"] :is(.tags a, .index-tag, .tag-cloud a)[href*="/software/"] { background: #2a4060; border-color: #3a5878; }
-[data-theme="dark"] :is(.tags a, .index-tag, .tag-cloud a)[href*="/ai/"] { background: #5a2840; border-color: #784058; }
-[data-theme="dark"] :is(.tags a, .index-tag, .tag-cloud a)[href*="/linguistics/"] { background: #2a582a; border-color: #3a703a; }
-[data-theme="dark"] :is(.tags a, .index-tag, .tag-cloud a)[href*="/nlp/"] { background: #5a4020; border-color: #785838; }
-[data-theme="dark"] :is(.tags a, .index-tag, .tag-cloud a)[href*="/education/"] { background: #402858; border-color: #584078; }
-[data-theme="dark"] :is(.tags a, .index-tag, .tag-cloud a)[href*="/music/"], [data-theme="dark"] :is(.tags a, .index-tag, .tag-cloud a)[href*="/guitar/"] { background: #5a2840; border-color: #784058; }
-[data-theme="dark"] :is(.tags a, .index-tag, .tag-cloud a)[href*="/research/"] { background: #2a5858; border-color: #3a7070; }
-[data-theme="dark"] :is(.tags a, .index-tag, .tag-cloud a)[href*="/books/"] { background: #585820; border-color: #707038; }
-[data-theme="dark"] :is(.tags a, .index-tag, .tag-cloud a)[href*="/meta/"] { background: #404040; border-color: #585858; }
+[data-theme="dark"] :is(.tags a, .index-tag, .tag-cloud a)[href*="/software/"], [data-theme="dark"] .tag-badge.tag-software { background: #2a4060; border-color: #3a5878; }
+[data-theme="dark"] :is(.tags a, .index-tag, .tag-cloud a)[href*="/ai/"], [data-theme="dark"] .tag-badge.tag-ai { background: #5a2840; border-color: #784058; }
+[data-theme="dark"] :is(.tags a, .index-tag, .tag-cloud a)[href*="/linguistics/"], [data-theme="dark"] .tag-badge.tag-linguistics { background: #2a582a; border-color: #3a703a; }
+[data-theme="dark"] :is(.tags a, .index-tag, .tag-cloud a)[href*="/nlp/"], [data-theme="dark"] .tag-badge.tag-nlp { background: #5a4020; border-color: #785838; }
+[data-theme="dark"] :is(.tags a, .index-tag, .tag-cloud a)[href*="/education/"], [data-theme="dark"] .tag-badge.tag-education { background: #402858; border-color: #584078; }
+[data-theme="dark"] :is(.tags a, .index-tag, .tag-cloud a)[href*="/music/"], [data-theme="dark"] :is(.tags a, .index-tag, .tag-cloud a)[href*="/guitar/"], [data-theme="dark"] .tag-badge.tag-music, [data-theme="dark"] .tag-badge.tag-guitar { background: #5a2840; border-color: #784058; }
+[data-theme="dark"] :is(.tags a, .index-tag, .tag-cloud a)[href*="/research/"], [data-theme="dark"] .tag-badge.tag-research { background: #2a5858; border-color: #3a7070; }
+[data-theme="dark"] :is(.tags a, .index-tag, .tag-cloud a)[href*="/books/"], [data-theme="dark"] .tag-badge.tag-books { background: #585820; border-color: #707038; }
+[data-theme="dark"] :is(.tags a, .index-tag, .tag-cloud a)[href*="/meta/"], [data-theme="dark"] .tag-badge.tag-meta { background: #404040; border-color: #585858; }
 
 /* Dark mode: add background to transparent project logos */
 [data-theme="dark"] .project-item img[alt="TCSE"],

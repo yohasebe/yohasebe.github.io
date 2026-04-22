@@ -670,9 +670,10 @@ def build_tag_pages(all_entries)
     }.join("\n  ")
 
     tag_html = apply_template(read_template("tag"), {
-      "tag"     => tag,
-      "entries" => items,
-      "root"    => root,
+      "tag"      => tag,
+      "tag_slug" => slug_for_tag(tag),
+      "entries"  => items,
+      "root"     => root,
     })
 
     page = wrap_in_base(tag_html, title: "Tag: #{tag}", root: root, og_url: absolute_url(out_path))

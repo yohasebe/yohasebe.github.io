@@ -102,14 +102,17 @@ def image_dimensions(path)
   ext = File.extname(path).downcase
   if ext == ".svg"
     svg = File.read(path, encoding: "UTF-8")
-    # Try width/height attributes first (more reliable than viewBox parsing)
-    w = svg[/\bwidth="([\d.]+)"/, 1]
-    h = svg[/\bheight="([\d.]+)"/, 1]
-    return [w.to_f, h.to_f] if w && h
-    # Fallback: parse viewBox="minX minY width height"
-    if svg =~ /viewBox="[\d.]+[\s,]+[\d.]+[\s,]+([\d.]+)[\s,]+([\d.]+)"/
+    # Read attributes only from the opening <svg ...> tag so that internal
+    # <rect width="..."> etc. do not leak into dimension detection.
+    svg_tag = svg[/<svg\b[^>]*>/m] || svg
+    # Prefer viewBox (reliable intrinsic size for mermaid-generated SVGs,
+    # whose root width/height are often percentage values).
+    if svg_tag =~ /viewBox="[\d.\-]+[\s,]+[\d.\-]+[\s,]+([\d.]+)[\s,]+([\d.]+)"/
       return [$1.to_f, $2.to_f]
     end
+    w = svg_tag[/\bwidth="([\d.]+)"/, 1]
+    h = svg_tag[/\bheight="([\d.]+)"/, 1]
+    return [w.to_f, h.to_f] if w && h
   else
     # Use identify for raster images (first frame only for animated GIFs)
     identify = magick_cmd == "magick" ? "magick identify" : "identify"
@@ -423,11 +426,13 @@ def convert_mermaid(markdown, out_dir, source_dir: nil)
       "![](#{svg_name})"
     elsif has_mmdc
       FileUtils.mkdir_p(out_dir)
+      config_file = File.join(File.dirname(__FILE__), "mermaid-config.json")
       Tempfile.create(["mermaid", ".mmd"]) do |tmp|
         tmp.write(mermaid_src)
         tmp.flush
-        system("mmdc", "-i", tmp.path, "-o", svg_path, "-b", "transparent",
-               out: File::NULL, err: File::NULL)
+        cmd = ["mmdc", "-i", tmp.path, "-o", svg_path, "-b", "transparent"]
+        cmd += ["-c", config_file] if File.exist?(config_file)
+        system(*cmd, out: File::NULL, err: File::NULL)
       end
       File.exist?(svg_path) ? "![](#{svg_name})" : "```mermaid\n#{mermaid_src}```"
     else

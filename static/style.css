@@ -154,6 +154,19 @@ img {
   border-radius: 4px;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
 }
+
+/* Mermaid-generated SVGs: give them an always-light canvas so the black
+   edge lines stay visible under both light and dark themes, both inline
+   and when enlarged in the modal. Override the auto-sized max-width so
+   the diagram fills the content column. */
+.post-body img[src*="mermaid-"],
+.img-modal-overlay img[src*="mermaid-"] {
+  background: #fafafa;
+  padding: 1rem;
+  border-radius: 6px;
+  box-sizing: border-box;
+  max-width: 100% !important;
+}
 .img-modal-nav {
   position: absolute;
   top: 50%;
@@ -550,6 +563,8 @@ main > h1:first-child { margin-top: 0; }
 }
 
 .post-body h2:first-child { margin-top: 1.5rem; }
+
+.post-body audio { display: block; margin: 0.5rem 0 2.5rem; }
 
 .post-body p.caption {
   text-align: center;

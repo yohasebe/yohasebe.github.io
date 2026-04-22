@@ -1,0 +1,12 @@
+{
+  "theme": "base",
+  "themeVariables": {
+    "fontSize": "14px",
+    "lineColor": "#64748b"
+  },
+  "flowchart": {
+    "curve": "linear",
+    "htmlLabels": true,
+    "padding": 15
+  }
+}

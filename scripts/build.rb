@@ -944,6 +944,10 @@ def build!
     Allow: /
     Disallow: /tcse/v/
     Disallow: /tcse/video/
+    Disallow: /tcse/t/
+    Disallow: /tcse/f/
+    Disallow: /tcse/p/
+    Disallow: /tcse/iframe/
     Disallow: /tcse/export
     Sitemap: #{SITE_URL}/sitemap.xml
   TXT

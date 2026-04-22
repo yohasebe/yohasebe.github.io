@@ -346,23 +346,29 @@ main > h1:first-child { margin-top: 0; }
 
 .project-list li {
   margin-bottom: 0;
+  padding: 1rem;
+  border-radius: 4px;
 }
 
-.project-list li:nth-child(odd) .project-item {
+.project-list li:nth-child(odd) {
   background: var(--bg-code);
 }
 
-.project-list li:nth-child(even) .project-item {
+.project-list li:nth-child(even) {
   background: var(--bg);
 }
 
 .project-item {
   display: flex;
   flex-direction: column;
-  padding: 1rem;
-  border-radius: 4px;
   color: var(--fg);
   text-decoration: none;
+}
+
+.project-collab {
+  margin: 0.5rem 0 0;
+  font-size: 0.82rem;
+  color: var(--fg-muted);
 }
 .project-item:hover {
   text-decoration: none;

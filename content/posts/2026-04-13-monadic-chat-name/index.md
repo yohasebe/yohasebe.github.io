@@ -1,7 +1,7 @@
 ---
 title: 'What "Monadic" in Monadic Chat Means'
 date: 2026-04-13
-tags: [software, ai, linguistics, research]
+tags: [software, ai, linguistics, research, monadic-chat]
 description: "The origin of the name 'Monadic Chat', connecting the functional programming monad to Langacker's current discourse space."
 ---
 

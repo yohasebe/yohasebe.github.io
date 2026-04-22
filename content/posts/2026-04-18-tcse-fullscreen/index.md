@@ -1,7 +1,7 @@
 ---
 title: "TCSE: A Fullscreen Mode for Listening Practice"
 date: 2026-04-18
-tags: [software, linguistics, education]
+tags: [software, linguistics, education, tcse]
 description: "A less visible TCSE feature: a fullscreen player that hides the transcript during playback, showing it only when paused."
 ---
 

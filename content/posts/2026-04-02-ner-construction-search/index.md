@@ -1,7 +1,7 @@
 ---
 title: "Named Entities as Typed Variables in Constructions"
 date: 2026-04-02
-tags: [linguistics, nlp, research]
+tags: [linguistics, nlp, research, tcse]
 description: "Treating named entities as typed variables in construction grammar search -- %PERSON said, X since %EVENT -- now in TCSE."
 ---
 

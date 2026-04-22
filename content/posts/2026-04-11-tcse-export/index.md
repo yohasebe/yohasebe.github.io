@@ -1,7 +1,7 @@
 ---
 title: "TCSE: Exporting Search Results"
 date: 2026-04-11
-tags: [software, linguistics, nlp, research]
+tags: [software, linguistics, nlp, research, tcse]
 description: "TCSE now exports search results as TSV or JSON, page by page, with match context and metadata for close reading and analysis."
 ---
 

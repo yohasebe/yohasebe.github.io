@@ -1,7 +1,7 @@
 ---
 title: "Paradocs: Sentence-by-Sentence Presentations"
 date: 2026-04-07
-tags: [software, education]
+tags: [software, education, paradocs]
 description: "Paradocs 1.0, a presentation tool that highlights text sentence by sentence -- originally built for ESL reading classes."
 ---
 

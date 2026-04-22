@@ -1,7 +1,7 @@
 ---
 title: "wp2txt: Caching and Category Extraction"
 date: 2026-02-21
-tags: [software, nlp]
+tags: [software, nlp, wp2txt]
 description: "wp2txt 2.1, a command-line Wikipedia text extractor in Ruby, now with SQLite caching, Ractor parallelism, and category extraction."
 ---
 

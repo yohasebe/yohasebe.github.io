@@ -1,7 +1,7 @@
 ---
 title: "TCSE: Entity Search and 6,400 Talks"
 date: 2026-03-17
-tags: [software, nlp, linguistics]
+tags: [software, nlp, linguistics, tcse]
 description: "TCSE updates: named entity search, collocation network visualization, and performance improvements across 6,400 TED talks."
 ---
 

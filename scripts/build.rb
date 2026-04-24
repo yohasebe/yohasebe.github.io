@@ -940,16 +940,12 @@ def build!
   build_sitemap(built_posts)
 
   # robots.txt
+  # TCSE dynamic deep-links are marked noindex via X-Robots-Tag at the
+  # server. Disallow here would prevent Googlebot from fetching the pages
+  # and reading that header.
   robots_txt = <<~TXT
     User-agent: *
     Allow: /
-    Disallow: /tcse/v/
-    Disallow: /tcse/video/
-    Disallow: /tcse/t/
-    Disallow: /tcse/f/
-    Disallow: /tcse/p/
-    Disallow: /tcse/iframe/
-    Disallow: /tcse/export
     Sitemap: #{SITE_URL}/sitemap.xml
   TXT
   write_file(File.join(DOCS, "robots.txt"), robots_txt)

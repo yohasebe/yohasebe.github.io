@@ -1,7 +1,7 @@
 ---
 title: "Filing in Trees, Finding in Fragments"
 date: 2026-04-25
-tags: [software, meta, macos]
+tags: [software, cognition, macos]
 description: "Why filing and finding pull in different directions, and what fzf in Alfred does about it."
 ---
 

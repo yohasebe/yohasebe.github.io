@@ -548,7 +548,7 @@ def build_entry(entry, prev_entry: nil, next_entry: nil)
     trans_html.gsub!(/src="images\//, 'src="../images/')
     trans_html.gsub!(/href="assets\//, "href=\"#{trans_root}assets/")
     # Fix relative src/href for non-directory files (e.g., mp3, png at post root)
-    trans_html.gsub!(/src="([^"\/][^"]*\.(mp3|ogg|wav|png|jpg|jpeg|gif|webp|svg))"/) { %{src="../#{$1}"} }
+    trans_html.gsub!(/src="([^"\/][^"]*\.(mp3|ogg|wav|mp4|m4v|webm|mov|png|jpg|jpeg|gif|webp|svg))"/) { %{src="../#{$1}"} }
     trans_html.gsub!(/href="(\.\.\/\d{4}-[^"]*)"/) { %{href="../../#{$1.sub('../', '')}"} }
     trans_lang_nav = build_lang_nav("../", translations.keys, code)
 

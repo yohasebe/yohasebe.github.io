@@ -728,7 +728,7 @@ def update_readme(entries)
   content = File.read(readme_path)
   return unless content.include?(start_marker) && content.include?(end_marker)
 
-  recent = entries.first(10).map { |e|
+  recent = entries.map { |e|
     title = e[:meta]["title"] || e[:path]
     url = "#{SITE_URL}/#{e[:path]}"
     "- #{date_iso(e[:meta])} -- [#{title}](#{url})"

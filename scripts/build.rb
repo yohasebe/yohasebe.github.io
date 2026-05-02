@@ -719,6 +719,31 @@ def build_rss(entries)
   write_file(File.join(DOCS, "feed.xml"), rss)
 end
 
+def update_readme(entries)
+  readme_path = File.join(ROOT, "README.md")
+  return unless File.exist?(readme_path)
+
+  start_marker = "<!-- recent-posts:start -->"
+  end_marker = "<!-- recent-posts:end -->"
+  content = File.read(readme_path)
+  return unless content.include?(start_marker) && content.include?(end_marker)
+
+  recent = entries.first(10).map { |e|
+    title = e[:meta]["title"] || e[:path]
+    url = "#{SITE_URL}/#{e[:path]}"
+    "- #{date_iso(e[:meta])} -- [#{title}](#{url})"
+  }.join("\n")
+
+  pattern = /#{Regexp.escape(start_marker)}.*?#{Regexp.escape(end_marker)}/m
+  new_section = "#{start_marker}\n#{recent}\n#{end_marker}"
+  new_content = content.sub(pattern, new_section)
+
+  if new_content != content
+    File.write(readme_path, new_content)
+    puts "  README.md (recent posts updated)"
+  end
+end
+
 def build_sitemap(entries)
   urls = []
   urls << %{  <url><loc>#{SITE_URL}/</loc></url>}
@@ -938,6 +963,9 @@ def build!
 
   # Sitemap
   build_sitemap(built_posts)
+
+  # README "Recent posts" section
+  update_readme(built_posts)
 
   # robots.txt
   # TCSE dynamic deep-links are marked noindex via X-Robots-Tag at the

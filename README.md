@@ -5,6 +5,7 @@ Source repository for [yohasebe.com](https://yohasebe.com) -- a personal blog ab
 ## Posts
 
 <!-- recent-posts:start -->
+- 2026-05-04 -- [ccm: An Attention Manager for Parallel Claude Code](https://yohasebe.com/posts/2026-05-04-ccm-attention-manager/)
 - 2026-04-25 -- [Watching Words Appear: Real-time STT and L2 Listening](https://yohasebe.com/posts/2026-04-25-speechdock-listening-mirror/)
 - 2026-04-25 -- [Filing in Trees, Finding in Fragments](https://yohasebe.com/posts/2026-04-25-fzf-alfred-workflow/)
 - 2026-04-21 -- [Monadic Chat: Expressive Speech](https://yohasebe.com/posts/2026-04-21-expressive-speech/)

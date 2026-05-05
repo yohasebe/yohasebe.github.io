@@ -1,5 +1,5 @@
 ---
-title: "ccm: An Attention Manager for Parallel Claude Code"
+title: "ccm: An Attention Manager for Parallel Claude Code Sessions"
 date: 2026-05-04
 tags: [software, ai, tmux, ccm]
 description: "When you run Claude Code across several projects in parallel, the bottleneck stops being compute and starts being attention. ccm is a tmux plugin that watches every session and tells you which one needs you next."

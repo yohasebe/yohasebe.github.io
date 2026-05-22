@@ -9,6 +9,12 @@ When you run Claude Code for one project at a time, switching contexts feels man
 
 I have been building [ccm for tmux](https://github.com/yohasebe/tmux-ccm) over the past few months as an answer to this. It does several things now, but the pieces that defined the project from the start trace back to a single question: *which window should I be looking at right now?*
 
+## The mental model
+
+![ccm mental model: a tmux session contains windows, each window equals one project (one folder), every window holds Claude Code plus other panes (shell, dev server, any long-running process), the state of the Claude Code pane (PERMIT, BUSY, IDLE) aggregates back to the window, and ccm switches between windows with prefix + Tab](mental-model.svg)
+
+ccm assigns each project to its own tmux window. The window can hold Claude Code alongside a shell, a dev server, or any other long-running process. The state of the Claude Code pane (PERMIT, BUSY, IDLE) propagates up to the window itself, and ccm lets you move between windows with `prefix + Tab`.
+
 ## States that map to urgency
 
 Each Claude Code session moves through phases. It is reasoning or producing output (BUSY). It pauses to ask permission before taking some action (PERMIT). It finishes and waits for the next prompt (IDLE). Or nothing is currently running in the window (SHELL). ccm reads each tmux pane's contents in the background and tags the window with one of these states.
@@ -35,7 +41,7 @@ This turns inter-project coordination into something close to message passing. T
 
 Once `ccm send` makes inter-project coordination routine, a natural next question follows: could the coordination itself be delegated to AI? Within a single project, Claude Code already does this through [Agent Teams](https://code.claude.com/docs/en/agent-teams), where one session coordinates teammates running in parallel panes within a single window (tmux or iTerm2).
 
-ccm assigns each project its own tmux window. Because the two structures (panes within a window, windows across a session) do not overlap, they compose naturally. A ccm-managed window can host an Agent Team, and ccm aggregates state across the team's panes using the same priority order. If any teammate is at PERMIT, the whole window appears as PERMIT in the dashboard -- so a single agent waiting for permission surfaces immediately even when focus is on a different teammate, and the human-side question stays the same: which window should I be looking at right now?
+Because the two structures (panes within a window, windows across a session) do not overlap, they compose naturally. A ccm-managed window can host an Agent Team, and ccm aggregates state across the team's panes using the same priority order. If any teammate is at PERMIT, the whole window appears as PERMIT in the dashboard -- so a single agent waiting for permission surfaces immediately even when focus is on a different teammate, and the human-side question stays the same: which window should I be looking at right now?
 
 ## Attention as the human-AI interface
 

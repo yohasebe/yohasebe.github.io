@@ -13,7 +13,7 @@ The latest [Monadic Chat](https://github.com/yohasebe/monadic-chat), an AI chat 
 
 ![Privacy Registry modal listing two mappings: PERSON_1 to Kevin Park (PERSON), PHONE_NUMBER_1 to 555-123-4567 (PHONE_NUMBER). A note above the table reads "This list is held in memory only and is cleared when the conversation is closed. Copy is intentionally disabled to avoid accidental disclosure."](privacy-dashboard.png)
 
-The detector runs in its own Docker container with Microsoft Presidio + spaCy. Presidio handles pattern-based categories (email, phone, credit card, SSN, IP, URL, and others); a local spaCy NER model handles context-dependent ones (people, organizations). Detection is multilingual, supporting 9 languages.
+The detector runs in its own Docker container with [Microsoft Presidio](https://microsoft.github.io/presidio/) + [spaCy](https://spacy.io/). Presidio handles pattern-based categories (email, phone, credit card, SSN, IP, URL, and others); a local spaCy NER model handles context-dependent ones (people, organizations). Detection is multilingual, supporting 9 languages.
 
 A few properties that matter:
 

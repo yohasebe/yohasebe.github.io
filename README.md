@@ -5,6 +5,8 @@ Source repository for [yohasebe.com](https://yohasebe.com) -- a personal blog ab
 ## Posts
 
 <!-- recent-posts:start -->
+- 2026-05-25 -- [Conversation Memory That Stays on Your Laptop](https://yohasebe.com/posts/2026-05-25-monadic-chat-local-memory/)
+- 2026-05-18 -- [The Cloud Sees PERSON, You See Your Name](https://yohasebe.com/posts/2026-05-18-monadic-chat-privacy-filter/)
 - 2026-05-04 -- [ccm: An Attention Manager for Parallel Claude Code Sessions](https://yohasebe.com/posts/2026-05-04-ccm-attention-manager/)
 - 2026-04-25 -- [Watching Words Appear: Real-time STT and L2 Listening](https://yohasebe.com/posts/2026-04-25-speechdock-listening-mirror/)
 - 2026-04-25 -- [Filing in Trees, Finding in Fragments](https://yohasebe.com/posts/2026-04-25-fzf-alfred-workflow/)

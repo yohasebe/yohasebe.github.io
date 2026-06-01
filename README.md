@@ -15,7 +15,6 @@ Source repository for [yohasebe.com](https://yohasebe.com) -- a personal blog ab
 - 2026-04-13 -- [What "Monadic" in Monadic Chat Means](https://yohasebe.com/posts/2026-04-13-monadic-chat-name/)
 - 2026-04-12 -- [Whisper Stream: A Unix Building Block for Speech](https://yohasebe.com/posts/2026-04-12-whisper-stream/)
 - 2026-04-11 -- [TCSE: Exporting Search Results](https://yohasebe.com/posts/2026-04-11-tcse-export/)
-- 2026-04-08 -- [AI Reviewed My Guitar Solo](https://yohasebe.com/posts/2026-04-08-gemini-guitar-review/)
 - 2026-04-07 -- [Paradocs: Sentence-by-Sentence Presentations](https://yohasebe.com/posts/2026-04-07-paradocs/)
 - 2026-04-06 -- [RSyntaxTree: Left-to-Right Trees](https://yohasebe.com/posts/2026-04-06-rsyntaxtree-ltr/)
 - 2026-04-05 -- [How This Site Works](https://yohasebe.com/posts/2026-04-05-how-this-site-works/)

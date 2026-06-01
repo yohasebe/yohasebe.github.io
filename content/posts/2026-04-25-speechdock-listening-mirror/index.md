@@ -1,7 +1,7 @@
 ---
 title: "Watching Words Appear: Real-time STT and L2 Listening"
 date: 2026-04-25
-tags: [software, speechdock, education, linguistics]
+tags: [software, speechdock, education, linguistics, cognition]
 description: "Why captions can hurt listening practice, and how the lag in real-time STT might be useful instead."
 ---
 

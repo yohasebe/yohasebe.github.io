@@ -5,6 +5,7 @@ Source repository for [yohasebe.com](https://yohasebe.com) -- a personal blog ab
 ## Posts
 
 <!-- recent-posts:start -->
+- 2026-06-06 -- [Reading Anthropic on Recursive Self-Improvement](https://yohasebe.com/posts/2026-06-06-reading-anthropic-rsi/)
 - 2026-06-05 -- [Looking for a Multi-Account Email Solution](https://yohasebe.com/posts/2026-06-05-email-aggregation/)
 - 2026-05-29 -- [Image Generation as a Classroom Visual Aid](https://yohasebe.com/posts/2026-05-29-classroom-image-generation/)
 - 2026-05-25 -- [Conversation Memory That Stays on Your Laptop](https://yohasebe.com/posts/2026-05-25-monadic-chat-local-memory/)

@@ -5,6 +5,7 @@ Source repository for [yohasebe.com](https://yohasebe.com) -- a personal blog ab
 ## Posts
 
 <!-- recent-posts:start -->
+- 2026-05-29 -- [Image Generation as a Classroom Visual Aid](https://yohasebe.com/posts/2026-05-29-classroom-image-generation/)
 - 2026-05-25 -- [Conversation Memory That Stays on Your Laptop](https://yohasebe.com/posts/2026-05-25-monadic-chat-local-memory/)
 - 2026-05-18 -- [The Cloud Sees PERSON, You See Your Name](https://yohasebe.com/posts/2026-05-18-monadic-chat-privacy-filter/)
 - 2026-05-04 -- [ccm: An Attention Manager for Parallel Claude Code Sessions](https://yohasebe.com/posts/2026-05-04-ccm-attention-manager/)

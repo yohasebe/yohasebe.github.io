@@ -17,6 +17,6 @@ I picked up a soldering iron for the first time in years and struggled through s
 
 A few days later, I noticed a problem. Plugging straight into an amp produced so much noise that playing was impossible. I had not caught it earlier because my wireless system (Boss WL-50) somehow masked the issue. I had no idea what was causing it, and the thought of redoing the wiring was unbearable. But the session was tomorrow, and I had six songs to play with this guitar.
 
-In desperation, I called a guitar repair shop in Nara that I had visited once before, and asked if he could take a look. He made time for me, so I drove over immediately. It turned out there was a redundant wire that I had left connected. He removed it, touched up the questionable solder joints, vacuumed out the cavity, and tested the output. The noise was gone. The rattling was gone.
+In desperation, I called a guitar repair shop in Nara that I had visited once before, and asked if they could take a look. The owner made time for me, so I drove over immediately. It turned out there was a redundant wire that I had left connected. He removed it, touched up the questionable solder joints, vacuumed out the cavity, and tested the output. The noise was gone. The rattling was gone.
 
 The whole thing took about an hour, and I was genuinely relieved. It is good to try new things, but some things are best left to the professionals.

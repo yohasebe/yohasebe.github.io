@@ -13,7 +13,7 @@ Played a small gig with friends as a cover band, on guitar. After a few rehearsa
 - RIZE: Pink Spider
 - back number: Suiheisen
 - Fujifabric: Wakamono no Subete
-- Thee Michelle Gun Elephant: Sekai no Owari
-- Thee Michelle Gun Elephant: Get Up Lucy
+- THEE MICHELLE GUN ELEPHANT: Sekai no Owari
+- THEE MICHELLE GUN ELEPHANT: Get Up Lucy
 
 "Wakamono no Subete" was my only request. I discovered the song through Dr. Capital's YouTube channel, where he breaks down classic J-Pop tracks. I liked it immediately. Back in the day, I only cared about hard rock and metal. Now I find real enjoyment in encountering and playing songs in all sorts of styles, especially ones I would never have sought out on my own. It was a small event, but standing on stage with a band for the first time in years made me genuinely nervous. A good kind of nervous, though.

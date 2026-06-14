@@ -39,4 +39,4 @@ When I push to GitHub, a webhook notifies my server, which pulls the latest chan
 - **Image handling**: Automatic EXIF metadata stripping and responsive sizing based on intrinsic dimensions
 - **Search**: Client-side full-text search using an inverted index generated at build time
 
-The source code is in a [public GitHub repository](https://github.com/yohasebe/yohasebe.github.io). Text files in a Git repository will outlast any blogging platform.
+The source code is in a [public GitHub repository](https://github.com/yohasebe/yohasebe.github.io). As I wrote in [an earlier post](../2026-04-01-why-english/index.html), plain text files under Git are the most durable publishing format I know of.

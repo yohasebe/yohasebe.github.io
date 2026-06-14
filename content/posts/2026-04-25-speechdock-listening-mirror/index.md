@@ -17,7 +17,7 @@ To address part of this, [TCSE](https://yohasebe.com/tcse/) has long had a fulls
 
 *SpeechDock real-time transcription overlaid on NASA's [Ask NASA: How Will Astronauts Dig on the Moon?](https://images.nasa.gov/details/NHQ_2020_0127_AskNASA┃%20How%20Will%20Astronauts%20Dig%20on%20the%20Moon) (00:16–00:46, public domain). The demo uses macOS's native STT, with VLC's audio output specified as the SpeechDock input source.*
 
-Real-time STT cannot show text at the same moment as the audio. There is always some lag in our verbal communication, for that matter: speech has to be heard, segmented, recognized, and rendered. And there is always the possibility of revision when later input changes the parse.
+Real-time STT cannot show text at the same moment as the audio. There is always some lag in our verbal communication, for that matter: speech has to be heard, segmented, recognized, and interpreted. And there is always the possibility of revision when later input changes the parse.
 
 Real-time STT makes this incremental, revisable parsing visible. The HUD is not a transcript that hands you the answer; it shows a process that mirrors the cognition you are trying to develop, unfolding before your eyes.
 

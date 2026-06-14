@@ -25,7 +25,7 @@ The `--stdout` and `--jsonl` modes are the important part. A speech-to-text tool
 
 ```bash
 # send a desktop notification when someone says "urgent"
-whisper-stream --stdout | grep -i "urgent" | notify-send
+whisper-stream --stdout | grep --line-buffered -i "urgent" | while read -r line; do notify-send "$line"; done
 
 # feed every utterance into an LLM
 whisper-stream --jsonl | jq -r '.text' | your-llm-cli

@@ -21,4 +21,4 @@ The way it works is that you request songs you want to play, and if enough peopl
 
 The rest came from the host asking "can you do this one too?" -- I said yes without thinking too hard, and ended up with seven songs. The result was a mess: wrong chords, mixed-up song structures, and one guitar solo I completely butchered. But it was an absolute blast.
 
-The event runs twice a year, spring and fall. The next one is scheduled for next month, and I plan to join again with fewer songs this time. I need to prepare so I can do a little better than last time. Looking forward to it.
+The event runs twice a year, spring and fall. The next one is scheduled for March, and I plan to join again with fewer songs this time. I need to prepare so I can do a little better than last time. Looking forward to it.

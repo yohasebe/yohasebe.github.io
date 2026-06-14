@@ -7,7 +7,7 @@ description: "Letting the chat model direct its own delivery -- tags and instruc
 
 [Monadic Chat](https://yohasebe.github.io/monadic-chat/)'s voice interaction runs on a pipeline: user audio → STT → chat model → TTS → assistant audio. The new **Expressive Speech** feature uses that pipeline by having the chat model emit both the reply text and a set of delivery cues (laugh here, whisper there, sound warm throughout) in the same generation, and passing them to the TTS engine together.
 
-In Monadic Chat's Voice Chat apps, this effectively lets the assistant act as an AI agent that also directs its own delivery -- deciding where to laugh, where to whisper, and what overall colour the voice should have, all at reply-generation time.
+In Monadic Chat's Voice Chat apps, this effectively lets the assistant act as an AI agent that also directs its own delivery -- deciding where to laugh, where to whisper, and what overall color the voice should have, all at reply-generation time.
 
 ```mermaid
 flowchart LR

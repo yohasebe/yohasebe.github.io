@@ -35,6 +35,6 @@ At the same time, AI comes with non-determinism, hallucinations, and the risk of
 
 ---
 
-Hasebe, Y. and J.-H. Lee. 2025. Divergent strategies in text simplification: A comparative analysis of AI and human approaches in language processing. *Intercultural Pragmatics* 22(2), 203-230. [PDF](https://doi.org/10.1515/ip-2025-2002)
+Hasebe, Y. and J.-H. Lee. 2025. Divergent strategies in text simplification: A comparative analysis of AI and human approaches in language processing. *Intercultural Pragmatics* 22(2), 203-230. [DOI](https://doi.org/10.1515/ip-2025-2002)
 
 Hasebe, Y. 2025. Redesigning Japanese language education through human-AI complementarity. Keynote lecture, 2025 International Symposium on Taiwan Japanese Language Education Research. [PDF](assets/docs/2025-taiwan-symposium-hasebe.pdf)

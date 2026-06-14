@@ -45,4 +45,4 @@ Because the two structures (panes within a window, windows across a session) do 
 
 ## Attention as the human-AI interface
 
-The opening observation -- attention, not compute, is the bottleneck -- seems to sharpen as more work moves to agents. Attention may be one of the places where humans and AI still meet, with the human role on that surface narrowing toward what to surface, what to ignore, when to interrupt. ccm is a small piece of that surface, and the rest is something I want to keep thinking about.
+The opening observation -- attention, not compute, is the bottleneck -- seems to sharpen as more work moves to agents. Attention may be one of the places where humans and AI still meet, with the human role on that surface narrowing toward what to bring forward, what to ignore, when to interrupt. ccm is a small piece of that surface, and the rest is something I want to keep thinking about.

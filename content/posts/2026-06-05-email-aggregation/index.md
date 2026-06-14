@@ -2,7 +2,7 @@
 title: "Looking for a Multi-Account Email Solution"
 date: 2026-06-05
 tags: [software, meta]
-description: "Multi-account email aggregation used to be a normal thing. It quietly stopped being normal. Notes on what changed, and on a small extension I have kept going on the side."
+description: "Multi-account email aggregation used to be a normal thing. It quietly stopped being normal. Notes on what changed, and on reviving a small extension of mine."
 ---
 
 There was a time when running several email accounts through one inbox was the obvious thing to do. Gmail would pull mail from your Yahoo account, or your school or work address, over POP, and you could send from those addresses too. One inbox, many addresses.

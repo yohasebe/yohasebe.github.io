@@ -9,7 +9,7 @@ One of the core ideas in construction grammar is that linguistic knowledge consi
 
 What if one of those slots expects a named entity -- a person, a place, a historical event? Traditional corpus tools can find word patterns, but they have no way to ask for "a country name" or "a famous person".
 
-[TCSE](https://yohasebe.com/tcse) (TED Corpus Search Engine) recently added support for `%ENTITY` notation in its advanced search, which treats named entity types as typed variables. `%PERSON` matches any person name, `%GPE` matches any country or city, `%ORG` matches any organization. See the [documentation](https://yohasebe.github.io/tcse-doc/searching-for-words/named-entity-search/) for the full list of supported types. Under the hood, the feature uses spaCy's NER annotations, which are stored for every token in the 6,400+ TED Talk corpus.
+[TCSE](https://yohasebe.com/tcse) (TED Corpus Search Engine) recently added support for `%ENTITY` notation in its advanced search, which treats named entity types as typed variables. `%PERSON` matches any person name, `%GPE` matches any country or city, `%ORG` matches any organization. See the [documentation](https://yohasebe.github.io/tcse-doc/searching-for-words/named-entity-search/) for the full list of supported types. Under the hood, the feature uses spaCy's NER annotations, which are stored for every token in the corpus of 6,400+ TED Talks.
 
 This turns out to be useful for finding constructions that would be hard to locate with plain keyword search. Let me show a few examples.
 

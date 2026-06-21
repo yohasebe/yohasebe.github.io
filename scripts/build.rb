@@ -25,6 +25,15 @@ DOCS      = File.join(ROOT, "docs")
 CACHE     = File.join(ROOT, ".cache", "images")
 SITE_URL  = "https://yohasebe.com"
 
+# Site/author identity used in JSON-LD (Person + WebSite on every page).
+SITE_NAME          = "Yoichiro Hasebe"
+PERSON_NAME        = "Yoichiro Hasebe"
+PERSON_GIVEN_NAME  = "Yoichiro"
+PERSON_FAMILY_NAME = "Hasebe"
+PERSON_SAME_AS = [
+  "https://github.com/yohasebe",
+].freeze
+
 # Reference content width (px) used to calculate image display scaling.
 CONTENT_WIDTH = 700
 
@@ -232,7 +241,42 @@ def escape_html(s)
   s.gsub("&", "&amp;").gsub("<", "&lt;").gsub(">", "&gt;").gsub('"', "&quot;")
 end
 
+# Always-included JSON-LD nodes: WebSite and Person identity for the whole site.
+# Other nodes (BlogPosting, etc.) are appended per page via render_ld_json.
+def site_ld_graph
+  [
+    {
+      "@type"      => "WebSite",
+      "@id"        => "#{SITE_URL}/#website",
+      "url"        => SITE_URL,
+      "name"       => SITE_NAME,
+      "inLanguage" => "en",
+      "publisher"  => { "@id" => "#{SITE_URL}/#person" },
+    },
+    {
+      "@type"      => "Person",
+      "@id"        => "#{SITE_URL}/#person",
+      "name"       => PERSON_NAME,
+      "givenName"  => PERSON_GIVEN_NAME,
+      "familyName" => PERSON_FAMILY_NAME,
+      "url"        => SITE_URL,
+      "sameAs"     => PERSON_SAME_AS,
+    },
+  ]
+end
+
+# Render an <script type="application/ld+json"> tag with the site graph and any
+# additional page-specific nodes (e.g., a BlogPosting on a post page).
+def render_ld_json(extra_nodes = [])
+  data = {
+    "@context" => "https://schema.org",
+    "@graph"   => site_ld_graph + extra_nodes,
+  }
+  %(<script type="application/ld+json">#{JSON.generate(data)}</script>)
+end
+
 def wrap_in_base(content, title:, lang: "en", root: "./", body_class: "", og_type: "website", og_url: SITE_URL, og_description: "", ld_json: nil)
+  ld_json ||= render_ld_json
   base = read_template("base")
   desc = og_description.empty? ? "Blog by Yoichiro Hasebe" : og_description
   apply_template(base, {
@@ -244,7 +288,7 @@ def wrap_in_base(content, title:, lang: "en", root: "./", body_class: "", og_typ
     "og_type"        => og_type,
     "og_url"         => og_url,
     "og_description" => escape_html(desc),
-    "ld_json"        => ld_json || "",
+    "ld_json"        => ld_json,
   })
 end
 
@@ -513,22 +557,19 @@ def build_entry(entry, prev_entry: nil, next_entry: nil)
     .gsub(/[#*>]/, "")                     # strip markdown formatting
     .gsub(/\s+/, " ").strip[0, 200]
     .sub(/\s+\S*\z/, "")
-  ld_data = {
-    "@context" => "https://schema.org",
-    "@type" => "BlogPosting",
-    "headline" => post_title,
-    "description" => post_desc,
-    "datePublished" => date_iso(meta),
-    "url" => post_url,
-    "author" => {
-      "@type" => "Person",
-      "name" => "Yoichiro Hasebe",
-      "url" => SITE_URL,
-    },
+  post_node = {
+    "@type"            => "BlogPosting",
+    "@id"              => "#{post_url}#blogposting",
+    "headline"         => post_title,
+    "description"      => post_desc,
+    "datePublished"    => date_iso(meta),
+    "url"              => post_url,
+    "author"           => { "@id" => "#{SITE_URL}/#person" },
+    "isPartOf"         => { "@id" => "#{SITE_URL}/#website" },
     "mainEntityOfPage" => { "@type" => "WebPage", "@id" => post_url },
   }
-  ld_data["dateModified"] = updated_iso(meta) if updated_iso(meta)
-  ld_json = %(<script type="application/ld+json">#{JSON.generate(ld_data)}</script>)
+  post_node["dateModified"] = updated_iso(meta) if updated_iso(meta)
+  ld_json = render_ld_json([post_node])
 
   page = wrap_in_base(post_html, title: post_title, lang: lang, root: root,
                        og_type: "article", og_url: post_url, og_description: post_desc,

@@ -27,7 +27,7 @@ What both share is the assumption that storage and retrieval should mirror each 
 
 What I want is to keep the hierarchy I already have, and search across it with whatever fragments come to mind, in any order.
 
-On macOS, the tool that does this for me is [fzf-alfred-workflow](https://github.com/yohasebe/fzf-alfred-workflow), a small Alfred workflow I wrote some years ago. It plugs [fzf](https://github.com/junegunn/fzf) and [fd](https://github.com/sharkdp/fd) together so any space-separated fragments I type are matched against every path under my home directory, in any order.
+On macOS, the tool that does this for me is [fzf-alfred-workflow](https://github.com/yohasebe/fzf-alfred-workflow), a small Alfred workflow I wrote some years ago. It plugs [fzf](https://github.com/junegunn/fzf) and [fd](https://github.com/sharkdp/fd) together so any space-separated fragments I type are matched against every path under my home directory (minus default exclusions such as ~/Library and node_modules), in any order.
 
 ![fzf in Alfred, narrowing results as keywords are added](fzf-demo.gif)
 

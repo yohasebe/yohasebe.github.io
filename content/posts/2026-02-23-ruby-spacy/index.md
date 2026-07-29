@@ -50,5 +50,5 @@ spaCy correctly classifies "crane" as NOUN in the first two sentences and VERB i
 
 > In this sentence, "crane" is a verb meaning to stretch or extend one's neck in order to see something better, particularly over an obstruction like a crowd.
 
-`linguistic_summary` packages spaCy's analysis -- tokens, named entities, noun chunks, and sentence boundaries -- as JSON, ready to pass directly to an LLM. This makes it straightforward to combine spaCy's structural analysis with LLM reasoning.
+`linguistic_summary` packages spaCy's analysis -- tokens, named entities, and noun chunks, with sentence boundaries available as an option -- as JSON, ready to pass directly to an LLM. This makes it straightforward to combine spaCy's structural analysis with LLM reasoning.
 

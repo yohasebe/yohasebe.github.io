@@ -7,7 +7,7 @@ description: "When you run Claude Code across several projects in parallel, the 
 
 When you run Claude Code for one project at a time, switching contexts feels manageable. You wait for it to finish, you respond, you move on. Push that up to four or five projects in parallel and the picture changes. The compute is no longer the bottleneck. Your attention is.
 
-I have been building [ccm for tmux](https://github.com/yohasebe/tmux-ccm) over the past few months as an answer to this. It does several things now, but the pieces that defined the project from the start trace back to a single question: *which window should I be looking at right now?*
+I have been building [ccm for tmux](https://github.com/yohasebe/tmux-ccm) as an answer to this. It does several things now, but the pieces that defined the project from the start trace back to a single question: *which window should I be looking at right now?*
 
 ## The mental model
 
@@ -17,13 +17,13 @@ ccm assigns each project to its own tmux window. The window can hold Claude Code
 
 ## States that map to urgency
 
-Each Claude Code session moves through phases. It is reasoning or producing output (BUSY). It pauses to ask permission before taking some action (PERMIT). It finishes and waits for the next prompt (IDLE). Or nothing is currently running in the window (SHELL). ccm reads each tmux pane's contents in the background and tags the window with one of these states.
+Each Claude Code session moves through phases. It is reasoning or producing output (BUSY). It pauses to ask permission before taking some action (PERMIT). It finishes and waits for the next prompt (IDLE). Or no Claude Code session is running in the window (SHELL). ccm reads each tmux pane's contents in the background and tags the window with one of these states.
 
 The four states sort cleanly by urgency:
 
 > PERMIT > BUSY > IDLE > SHELL
 
-PERMIT is the most demanding: a session has presented options and is waiting for you. Miss it and the session sits frozen. BUSY is next -- a session is producing output that you may want to follow or course-correct. IDLE is comfortable: the session has done what was asked, and there is no pressure. SHELL is the lowest priority; nothing is running, so nothing needs you unless you decide to start something.
+PERMIT is the most demanding: a session has presented options and is waiting for you. Miss it and the session sits frozen. BUSY is next -- a session is producing output that you may want to follow or course-correct. IDLE is comfortable: the session has done what was asked, and there is no pressure. SHELL is the lowest priority; no session is running, so nothing needs you unless you decide to start one.
 
 ccm also moves windows to SHELL on its own. A session that has been idle for a while is auto-exited to free memory and CPU, then restarted with `--continue` (resuming the previous context) when you switch back. The state ordering is what the dashboard surfaces:
 

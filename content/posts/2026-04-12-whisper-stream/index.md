@@ -9,7 +9,7 @@ description: "Whisper Stream: a single-file bash script that turns a microphone 
 
 ## What it does
 
-The script listens to the microphone, uses sox's silence detection to segment the audio into natural utterances, and transcribes each one. The key design constraint is that it is a single bash file with no dependencies beyond sox and curl (or whisper.cpp for local use). No Python, no Node, no virtual environment.
+The script listens to the microphone, uses sox's silence detection to segment the audio into natural utterances, and transcribes each one. The key design constraint is that it is a single bash file with no dependencies beyond sox, curl, and jq (or whisper.cpp for local use). No Python, no Node, no virtual environment.
 
 ![Whisper Stream in action](whisper-stream-demo.gif)
 

@@ -37,11 +37,11 @@ $$t = \frac{O_{11} - E_{11}}{\sqrt{O_{11}}}$$
 
 where $E_{11} = \frac{R_1 \cdot C_1}{N}$ is the expected frequency under independence. t-score is better suited for detecting high-frequency, stable collocations.
 
-### Difference of Proportions (DP)
+### Deviation of Proportions (DP)
 
-$$DP = \frac{O_{11}}{R_1} - \frac{C_1 - O_{11}}{N - R_1}$$
+$$DP = \frac{1}{2}\sum_{i} \left| \frac{f_i}{f} - \frac{n_i}{N} \right|$$
 
-This takes the difference between the rate at which the collocate appears in the context of the target word and its rate elsewhere. It is intuitive to interpret and can be read as an effect size.
+where $f_i$ is the pair's frequency in talk $i$ (with total $f$) and $n_i$ is the size of talk $i$ (with corpus total $N$). This measures how evenly the pair is dispersed across talks: values near 0 mean it appears throughout the corpus, values near 1 mean it is concentrated in a few talks.
 
 ## Visualization: the network for "beautiful"
 

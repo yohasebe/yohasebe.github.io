@@ -7,7 +7,7 @@ description: "Treating named entities as typed variables in construction grammar
 
 One of the core ideas in construction grammar is that linguistic knowledge consists of form-meaning pairings at every level -- from individual morphemes to abstract clause patterns. Many constructions have open slots that speakers fill with words of a certain type. "Give X a Y" wants a recipient and a theme. "The more X, the more Y" wants two scalar expressions.
 
-What if one of those slots expects a named entity -- a person, a place, a historical event? Traditional corpus tools can find word patterns, but they have no way to ask for "a country name" or "a famous person".
+What if one of those slots expects a named entity -- a person, a place, a historical event? Keyword- and POS-based corpus tools can find word patterns, but they have no way to ask for "a country name" or "a famous person".
 
 [TCSE](https://yohasebe.com/tcse) (TED Corpus Search Engine) recently added support for `%ENTITY` notation in its advanced search, which treats named entity types as typed variables. `%PERSON` matches any person name, `%GPE` matches any country or city, `%ORG` matches any organization. See the [documentation](https://yohasebe.github.io/tcse-doc/searching-for-words/named-entity-search/) for the full list of supported types. Under the hood, the feature uses spaCy's NER annotations, which are stored for every token in the corpus of 6,400+ TED Talks.
 

@@ -5,6 +5,9 @@ Source repository for [yohasebe.com](https://yohasebe.com) -- a personal blog ab
 ## Posts
 
 <!-- recent-posts:start -->
+- 2026-07-29 -- [A Sidekick for Claude Code](https://yohasebe.com/posts/2026-07-29-ccm-sidekick/)
+- 2026-07-14 -- [jReadability and jWriter](https://yohasebe.com/posts/2026-07-14-jreadability-jwriter/)
+- 2026-07-09 -- [Another Small Gig](https://yohasebe.com/posts/2026-07-09-cover-band-live-summer/)
 - 2026-06-13 -- [Music Analyst: Measuring and Evaluating a Recording](https://yohasebe.com/posts/2026-06-13-music-analyst-guitar-solo/)
 - 2026-06-06 -- [Reading Anthropic on Recursive Self-Improvement](https://yohasebe.com/posts/2026-06-06-reading-anthropic-rsi/)
 - 2026-06-05 -- [Looking for a Multi-Account Email Solution](https://yohasebe.com/posts/2026-06-05-email-aggregation/)

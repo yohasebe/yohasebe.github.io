@@ -1,7 +1,7 @@
 ---
 title: "A Small Gig"
 date: 2026-02-01
-tags: [music, guitar]
+tags: [music, guitar, lifelog]
 description: "A small cover band gig with friends: eight songs across a wide range of Japanese rock styles, on guitar."
 ---
 

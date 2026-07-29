@@ -1,7 +1,7 @@
 ---
 title: "Cover Sessions, Fall 2025"
 date: 2026-01-22
-tags: [music, guitar]
+tags: [music, guitar, lifelog]
 description: "Playing guitar at a cover session event with friends -- seven songs across Japanese rock and hard rock classics."
 ---
 

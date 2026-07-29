@@ -1,7 +1,7 @@
 ---
 title: "Cover Sessions, Spring 2026"
 date: 2026-03-15
-tags: [music, guitar]
+tags: [music, guitar, lifelog]
 description: "Another round at the cover session event -- guitar on six songs from Dokken, back number, and Seiko Matsuda."
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Pickup Swap Gone Wrong (and Then Right)"
 date: 2026-03-14
-tags: [music, guitar]
+tags: [music, guitar, lifelog]
 description: "Swapping the pickups on my Fujigen Expert Strat to Suhr sets, soldering iron in hand for the first time in years."
 ---
 

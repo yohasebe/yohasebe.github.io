@@ -1,6 +1,7 @@
 ---
 title: "Filing in Trees, Finding in Fragments"
 date: 2026-04-25
+updated: 2026-08-01
 tags: [software, cognition, macos]
 description: "Why filing and finding pull in different directions, and what fzf in Alfred does about it."
 ---
@@ -28,6 +29,10 @@ What both share is the assumption that storage and retrieval should mirror each 
 What I want is to keep the hierarchy I already have, and search across it with whatever fragments come to mind, in any order.
 
 On macOS, the tool that does this for me is [fzf-alfred-workflow](https://github.com/yohasebe/fzf-alfred-workflow), a small Alfred workflow I wrote some years ago. It plugs [fzf](https://github.com/junegunn/fzf) and [fd](https://github.com/sharkdp/fd) together so any space-separated fragments I type are matched against every path under my home directory (minus default exclusions such as ~/Library and node_modules), in any order.
+
+<div class="figure-wide"><img src="how-it-works.svg" class="theme-svg" alt="The query 'fzf damage puppets metallica' typed in the reverse of the order the words appear in the path /music/metallica/master-of-puppets/08-damage-inc.mp3, with curved connectors crossing to show each word matching anywhere in the path" style="width:100%" /></div>
+
+The match runs over the whole path, not just the filename. The folders a file sits in are part of what I can search, so the route I chose when filing -- project, year, topic -- becomes material for finding later. And fragments typed through a Japanese IME now match filenames whether macOS stored them in composed or decomposed Unicode.
 
 ![fzf in Alfred, narrowing results as keywords are added](fzf-demo.gif)
 

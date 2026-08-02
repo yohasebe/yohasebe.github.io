@@ -84,7 +84,7 @@ Junior College Division
 
 - 李在鎬・伊集院郁子・村田裕美子・青木優子・長谷部陽一郎. 2024.「日本語の習熟度と接続表現の使用に関する調査」『早稲田日本語教育学』36, 259-268. [PDF](https://waseda.repo.nii.ac.jp/record/2002888/files/WasedaNihongoKyoikugaku_36_25.pdf)
 
-- Hasebe, Yoichiro. 2023. [Review of] Littlemore, Jeannette (2019) *Metaphors in the Mind: Sources of Variation in Embodied Metaphor*. *English Linguistics* 40, 218-229.
+- Hasebe, Yoichiro. 2023. [Review of] Littlemore, Jeannette (2019) *Metaphors in the Mind: Sources of Variation in Embodied Metaphor*. *English Linguistics* 40, 218-229. [DOI](https://doi.org/10.9793/elsj.40.0_218)
 
 - 長谷部陽一郎. 2021. 「英語as叙述構文の認知的考察」『コミュニカーレ』10, 1-20.
 

@@ -5,6 +5,7 @@ Source repository for [yohasebe.com](https://yohasebe.com) -- a personal blog ab
 ## Posts
 
 <!-- recent-posts:start -->
+- 2026-08-15 -- [RSyntaxTree: Tidy Layout](https://yohasebe.com/posts/2026-08-15-rsyntaxtree-tidy/)
 - 2026-07-29 -- [A Sidekick for Claude Code](https://yohasebe.com/posts/2026-07-29-ccm-sidekick/)
 - 2026-07-14 -- [jReadability and jWriter](https://yohasebe.com/posts/2026-07-14-jreadability-jwriter/)
 - 2026-07-09 -- [Another Small Gig](https://yohasebe.com/posts/2026-07-09-cover-band-live-summer/)

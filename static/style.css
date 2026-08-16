@@ -178,6 +178,40 @@ img {
   transform: translateX(-50%);
 }
 
+/* Comparison grid: each cell carries the true relative width of the figure
+   it holds, so a set of images reads at one shared scale with no gutters
+   between them. Images need an inline max-width to clear the 75% cap on
+   .post-body img; build.rb appends a second style attribute, and the first
+   one wins. Below the breakpoint the cells stack, since proportional cells
+   on a phone would be too small to read. */
+.post-body .figure-grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.post-body .figure-grid > div {
+  margin-bottom: 1.5rem;
+}
+
+.post-body .figure-grid .fig-label {
+  text-align: center;
+  color: var(--fg-muted);
+  font-size: 0.85rem;
+  margin-top: 0.4rem;
+}
+
+@media (max-width: 40rem) {
+  .post-body .figure-grid > div {
+    width: 100% !important;
+    margin-bottom: 1rem;
+  }
+  .post-body .figure-grid img {
+    max-width: 100% !important;
+  }
+}
+
 /* Self-theming SVGs (they carry their own prefers-color-scheme styles):
    pin an opaque canvas to the same OS scheme the SVG itself reads, so the
    diagram stays legible when the page theme is toggled opposite the OS,

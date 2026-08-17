@@ -10,22 +10,22 @@ I released [RSyntaxTree](https://yohasebe.com/rsyntaxtree) 1.8. One of the addit
 Until now, every subtree was given a horizontal slot wide enough that it could never meet its neighbours. That is simple and always works, but much of the reserved space goes unused. Each embedded phrase pushes its siblings apart, and trees nest deeply, so even a small structure can come out wider than it needs to be. Here is one from Chomsky (1995: 50), drawn the old way:
 
 <div class="figure-grid">
-<div style="width:69.2%">
+<div style="width:69.4%">
 <img src="tidy-off.svg" alt="A minimalist tree drawn without tidy layout: each subtree keeps a fixed slot, leaving wide gaps between branches" style="width:100%; max-width:none; margin:0" />
-<div class="fig-label">off — 968 px</div>
+<div class="fig-label">off — 969 px</div>
 </div>
 </div>
 
 Tidy layout measures the actual shape of each subtree and slides neighbours together until they almost touch. There are three levels of packing; here are the first two, at the same scale as the tree above:
 
 <div class="figure-grid">
-<div style="width:55.4%">
+<div style="width:55.6%">
 <img src="tidy-low.svg" alt="The same tree at tidy low: neighbouring subtrees are packed by their outlines" style="width:100%; max-width:none; margin:0" />
-<div class="fig-label">low — 771 px</div>
+<div class="fig-label">low — 772 px</div>
 </div>
-<div style="width:43.6%">
+<div style="width:43.4%">
 <img src="tidy-medium.svg" alt="The same tree at tidy medium: subtrees also move into space that neighbours on other rows are not using" style="width:100%; max-width:none; margin:0" />
-<div class="fig-label">medium — 601 px</div>
+<div class="fig-label">medium — 597 px</div>
 </div>
 </div>
 

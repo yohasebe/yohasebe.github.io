@@ -207,7 +207,12 @@ img {
     width: 100% !important;
     margin-bottom: 1rem;
   }
+  /* On a phone the shared scale has to go: at the widths that carry it,
+     the narrowest figure of a set would be a couple of hundred pixels
+     across. Each figure fills the column instead, and the captions carry
+     the sizes the pictures no longer show. */
   .post-body .figure-grid img {
+    width: 100% !important;
     max-width: 100% !important;
   }
 }

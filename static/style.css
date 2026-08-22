@@ -195,6 +195,17 @@ img {
   margin-bottom: 1.5rem;
 }
 
+/* Collapsed source blocks under figures. */
+.post-body details {
+  margin: 0.5rem 0 1.5rem;
+}
+
+.post-body details summary {
+  cursor: pointer;
+  color: var(--fg-muted);
+  font-size: 0.9rem;
+}
+
 .post-body .figure-grid .fig-label {
   text-align: center;
   color: var(--fg-muted);
@@ -210,8 +221,10 @@ img {
   /* On a phone the shared scale has to go: at the widths that carry it,
      the narrowest figure of a set would be a couple of hundred pixels
      across. Each figure fills the column instead, and the captions carry
-     the sizes the pictures no longer show. */
-  .post-body .figure-grid img {
+     the sizes the pictures no longer show. The same reasoning applies to
+     images sized by a scale group (build.rb injects their widths). */
+  .post-body .figure-grid img,
+  .post-body img[class*="scale-group-"] {
     width: 100% !important;
     max-width: 100% !important;
   }

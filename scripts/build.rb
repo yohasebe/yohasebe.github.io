@@ -132,6 +132,51 @@ def image_dimensions(path)
   nil
 end
 
+# Display percentage of CONTENT_WIDTH for an image of intrinsic width w.
+# Wide images fill more of the column; narrow ones shrink.
+def display_band_pct(w)
+  ratio = (w / CONTENT_WIDTH.to_f).clamp(0.0, 3.0)
+  case ratio
+  when 0.0..0.4  then 45
+  when 0.4..0.7  then 55
+  when 0.7..1.0  then 70
+  when 1.0..1.5  then 80
+  when 1.5..2.0  then 90
+  else                100
+  end
+end
+
+# Images tagged with a shared class (e.g. ![...](fig.svg){:.scale-group-avm})
+# are displayed at ONE pixels-per-unit scale, so figures generated at the same
+# font size keep the same apparent type size on the page. The widest image in
+# a group gets the percentage auto-sizing would give it anyway; the others are
+# scaled down in proportion to their intrinsic widths. Without this, per-image
+# banding picks a different scale for each figure, and two related figures end
+# up with visibly different lettering.
+def scale_image_groups(html, source_dir)
+  groups = Hash.new { |h, k| h[k] = [] }
+  html.scan(/<img\s[^>]*class="[^"]*\b(scale-group-\w+)\b[^"]*"[^>]*>/) do
+    # Read both values off $~ before any further regex call clobbers it.
+    tag = $~[0]
+    key = $~[1]
+    src = tag[/src="([^"]+)"/, 1]
+    next unless src
+    dims = image_dimensions(File.expand_path(src, source_dir))
+    groups[key] << [tag, dims[0]] if dims
+  end
+  groups.each do |_, imgs|
+    widest = imgs.map { |_, w| w }.max
+    anchor_pct = display_band_pct(widest)
+    imgs.each do |tag, w|
+      next if tag.include?("max-width") # manual style wins
+      pct = (anchor_pct * w / widest).round(1)
+      sized = tag.sub(/\s*\/?>\z/, %( style="width:#{pct}%; max-width:none" />))
+      html = html.sub(tag, sized)
+    end
+  end
+  html
+end
+
 # Inject inline max-width on <img> tags based on the image's intrinsic width
 # relative to CONTENT_WIDTH. source_dir is the directory to resolve relative src.
 def auto_size_images(html, source_dir)
@@ -146,18 +191,7 @@ def auto_size_images(html, source_dir)
       img_path = File.expand_path(src, source_dir)
       dims = image_dimensions(img_path)
       if dims
-        w = dims[0]
-        # Map intrinsic width to a display percentage of CONTENT_WIDTH.
-        # Wide images fill more of the column; narrow ones shrink.
-        ratio = (w / CONTENT_WIDTH.to_f).clamp(0.0, 3.0)
-        pct = case ratio
-              when 0.0..0.4  then 45
-              when 0.4..0.7  then 55
-              when 0.7..1.0  then 70
-              when 1.0..1.5  then 80
-              when 1.5..2.0  then 90
-              else                100
-              end
+        pct = display_band_pct(dims[0])
         # Remove trailing " /" from self-closing tags before injecting style
         clean_post = post.sub(/\s*\/\s*\z/, "")
         loading_attr = has_loading ? "" : %( loading="lazy")
@@ -510,6 +544,7 @@ def build_entry(entry, prev_entry: nil, next_entry: nil)
   end
 
   # Auto-size images based on intrinsic dimensions (resolve relative to source dir)
+  html = scale_image_groups(html, entry[:source_dir])
   html = auto_size_images(html, entry[:source_dir])
 
   # Detect available translations
@@ -581,6 +616,7 @@ def build_entry(entry, prev_entry: nil, next_entry: nil)
     trans_body = convert_mermaid(trans[:body], out_dir, source_dir: entry[:source_dir])
     trans_html = render_markdown(trans_body)
     # Auto-size images before path rewriting (src still relative to source_dir)
+    trans_html = scale_image_groups(trans_html, entry[:source_dir])
     trans_html = auto_size_images(trans_html, entry[:source_dir])
     trans_title = trans[:meta]["title"] || meta["title"] || slug
     trans_out_path = File.join(out_dir, code, "index.html")
